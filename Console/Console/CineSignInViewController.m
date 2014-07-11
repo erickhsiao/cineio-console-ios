@@ -8,6 +8,7 @@
 
 #import "CineSignInViewController.h"
 #import "CineWebViewController.h"
+#import "AFNetworking.h"
 
 @interface CineSignInViewController ()
 
@@ -50,8 +51,6 @@
 }
 
 - (IBAction)toggleForm:(id)sender {
-    NSLog(@"toggleForm");
-    
     if (passwordField.isEnabled) {
         [passwordField setEnabled:NO];
         [passwordField setHidden:YES];
@@ -66,14 +65,19 @@
 }
 
 - (IBAction)showTermsOfService:(id)sender {
-    NSLog(@"showTermsOfService");
-
+    // modally show the web view controller
     UIWindow *window = [[UIApplication sharedApplication] delegate].window;
     UIStoryboard *storyboard = window.rootViewController.storyboard;
     CineWebViewController *webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
     [self presentViewController:webViewController animated:YES completion:nil];
-    // TODO: use API to get static document
-    [webViewController showURL:@"https://www.cine.io/legal/terms-of-service"];
+    
+    // load the TOS into it
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"https://www.cine.io/api/1/-/static-document?id=legal%2Fterms-of-service" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
+        [webViewController presentHTML:response[@"document"]];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [webViewController presentHTML:[error localizedDescription]];
+    }];
 }
 
 @end

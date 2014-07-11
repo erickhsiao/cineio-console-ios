@@ -31,11 +31,9 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)showURL:(NSString *)urlString
+- (void)presentHTML:(NSString *)html
 {
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:req];
+    [webView loadHTMLString:html baseURL:[NSURL URLWithString:@"https://www.cine.io/"]];
 }
 
 - (IBAction)dismiss:(id)sender {

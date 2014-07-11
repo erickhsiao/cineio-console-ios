@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
-- (void)showURL:(NSString*)urlString;
+- (void)presentHTML:(NSString*)html;
 - (IBAction)dismiss:(id)sender;
 
 @end
