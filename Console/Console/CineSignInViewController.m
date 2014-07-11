@@ -88,7 +88,7 @@
     NSDictionary *gitHubConfigDict =
         @{ kNXOAuth2AccountStoreConfigurationClientID: @"d672e68c08a4e108b562",
            kNXOAuth2AccountStoreConfigurationSecret: @"7fc58f25f68ecda810b1fa9b293e99fda65d6b39",
-           kNXOAuth2AccountStoreConfigurationScope: [NSSet setWithObjects:@"user", nil],
+           kNXOAuth2AccountStoreConfigurationScope: [NSSet setWithObjects:@"user:email", nil],
            kNXOAuth2AccountStoreConfigurationAuthorizeURL: [NSURL URLWithString:@"https://github.com/login/oauth/authorize"],
            kNXOAuth2AccountStoreConfigurationTokenURL: [NSURL URLWithString:@"https://github.com/login/oauth/access_token"],
            kNXOAuth2AccountStoreConfigurationRedirectURL: [NSURL URLWithString:@"cineioconsole://github-callback"],
