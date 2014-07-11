@@ -86,7 +86,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showForgotPasswordForm:" destination="GXF-qB-L8c" eventType="touchUpInside" id="Xyg-lj-Eo2"/>
+                                    <action selector="toggleForm:" destination="GXF-qB-L8c" eventType="touchUpInside" id="JMv-Ba-9t7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or4-rq-eNr">
@@ -113,9 +113,11 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="hic-yR-wsp" id="OcV-te-2wI"/>
+                        <outlet property="forgotPasswordButton" destination="iCL-Dp-xsN" id="57q-PK-5cq"/>
                         <outlet property="passwordField" destination="qAG-0W-b1K" id="51J-Mm-tYc"/>
                         <outlet property="signInButton" destination="YTg-47-gnO" id="89i-A5-UL6"/>
                         <outlet property="signInGithubButton" destination="IWA-Oi-iyc" id="Ug3-fE-PL2"/>
+                        <outlet property="termsOfServiceButton" destination="or4-rq-eNr" id="HbG-eC-gLU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jni-DL-pWH" userLabel="First Responder" sceneMemberID="firstResponder"/>

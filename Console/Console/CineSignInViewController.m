@@ -15,6 +15,10 @@
 
 @implementation CineSignInViewController
 
+@synthesize passwordField;
+@synthesize signInButton;
+@synthesize forgotPasswordButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,8 +49,20 @@
     NSLog(@"signInGithub");
 }
 
-- (IBAction)showForgotPasswordForm:(id)sender {
-    NSLog(@"showForgotPasswordForm");
+- (IBAction)toggleForm:(id)sender {
+    NSLog(@"toggleForm");
+    
+    if (passwordField.isEnabled) {
+        [passwordField setEnabled:NO];
+        [passwordField setHidden:YES];
+        [signInButton setTitle:@"RECOVER PASSWORD" forState:UIControlStateNormal];
+        [forgotPasswordButton setTitle:@"I remember my password." forState:UIControlStateNormal];
+    } else {
+        [passwordField setEnabled:YES];
+        [passwordField setHidden:NO];
+        [signInButton setTitle:@"SIGN UP OR SIGN IN" forState:UIControlStateNormal];
+        [forgotPasswordButton setTitle:@"Forgot password?" forState:UIControlStateNormal];
+    }
 }
 
 - (IBAction)showTermsOfService:(id)sender {

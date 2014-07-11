@@ -16,12 +16,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *forgotPasswordLabel;
-@property (weak, nonatomic) IBOutlet UILabel *termsOfServiceLabel;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton *termsOfServiceButton;
 
 - (IBAction)signIn:(id)sender;
 - (IBAction)signInGithub:(id)sender;
-- (IBAction)showForgotPasswordForm:(id)sender;
+- (IBAction)toggleForm:(id)sender;
 - (IBAction)showTermsOfService:(id)sender;
 
 @end
