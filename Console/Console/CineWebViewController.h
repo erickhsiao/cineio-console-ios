@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CineWebViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+- (void)showURL:(NSString*)urlString;
+- (IBAction)dismiss:(id)sender;
 
 @end

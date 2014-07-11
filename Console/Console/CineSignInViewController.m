@@ -7,6 +7,7 @@
 //
 
 #import "CineSignInViewController.h"
+#import "CineWebViewController.h"
 
 @interface CineSignInViewController ()
 
@@ -26,7 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -34,25 +34,30 @@
 }
 
 - (BOOL)shouldAutorotate {
-    
     return NO;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)signIn:(id)sender {
+    NSLog(@"signIn");
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)signInGithub:(id)sender {
+    NSLog(@"signInGithub");
 }
-*/
+
+- (IBAction)showForgotPasswordForm:(id)sender {
+    NSLog(@"showForgotPasswordForm");
+}
+
+- (IBAction)showTermsOfService:(id)sender {
+    NSLog(@"showTermsOfService");
+
+    UIWindow *window = [[UIApplication sharedApplication] delegate].window;
+    UIStoryboard *storyboard = window.rootViewController.storyboard;
+    CineWebViewController *webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
+    [self presentViewController:webViewController animated:YES completion:nil];
+    // TODO: use API to get static document
+    [webViewController showURL:@"https://www.cine.io/legal/terms-of-service"];
+}
 
 @end
