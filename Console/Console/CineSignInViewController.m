@@ -17,6 +17,7 @@
 
 @implementation CineSignInViewController
 
+@synthesize emailField;
 @synthesize passwordField;
 @synthesize signInButton;
 @synthesize forgotPasswordButton;
@@ -43,8 +44,12 @@
     return NO;
 }
 
-- (IBAction)signIn:(id)sender {
-    NSLog(@"signIn");
+- (IBAction)submitForm:(id)sender {
+    if (passwordField.isEnabled) {
+        [self signInOrSignUp];
+    } else {
+        [self recoverPassword];
+    }
 }
 
 - (IBAction)signInGithub:(id)sender {
@@ -78,6 +83,35 @@
         [webViewController presentHTML:response[@"document"]];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [webViewController presentHTML:[error localizedDescription]];
+    }];
+}
+
+#pragma Sign-in / Sign-up stuff
+
+- (void)signInOrSignUp
+{
+    NSLog(@"sign up / sign in");
+    NSDictionary *formData =
+    @{ @"username": emailField.text,
+       @"password": passwordField.text,
+       @"plan": @"free" };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:@"https://www.cine.io/login" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"%@", response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)recoverPassword
+{
+    NSLog(@"recover password");
+    NSDictionary *formData = @{ @"email": emailField.text };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:@"https://www.cine.io/api/1/-/password-change-request" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"%@", response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
     }];
 }
 

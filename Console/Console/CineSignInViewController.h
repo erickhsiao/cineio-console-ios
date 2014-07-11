@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *termsOfServiceButton;
 
-- (IBAction)signIn:(id)sender;
+- (IBAction)submitForm:(id)sender;
 - (IBAction)signInGithub:(id)sender;
 - (IBAction)toggleForm:(id)sender;
 - (IBAction)showTermsOfService:(id)sender;
