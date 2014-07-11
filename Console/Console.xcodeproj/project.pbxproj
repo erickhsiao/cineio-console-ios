@@ -25,6 +25,7 @@
 		002983A5196F64E800817D88 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 002983A4196F64E800817D88 /* Podfile */; };
 		002983A8196F8F4000817D88 /* CineWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983A7196F8F4000817D88 /* CineWebViewController.m */; };
 		002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AA196F8F8A00817D88 /* CineSignInViewController.m */; };
+		002983AD196FE09A00817D88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002983AC196FE09A00817D88 /* README.md */; };
 		230D20A7DCA440E6816B1608 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755E6D300C04A989719F867 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		002983A7196F8F4000817D88 /* CineWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineWebViewController.m; sourceTree = "<group>"; };
 		002983A9196F8F8A00817D88 /* CineSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineSignInViewController.h; sourceTree = "<group>"; };
 		002983AA196F8F8A00817D88 /* CineSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineSignInViewController.m; sourceTree = "<group>"; };
+		002983AC196FE09A00817D88 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		24183C3AA3FC48D8A391365B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9755E6D300C04A989719F867 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 		00298360196F64CC00817D88 = {
 			isa = PBXGroup;
 			children = (
+				002983AC196FE09A00817D88 /* README.md */,
 				002983A4196F64E800817D88 /* Podfile */,
 				00298372196F64CC00817D88 /* Console */,
 				00298394196F64CC00817D88 /* ConsoleTests */,
@@ -253,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002983AD196FE09A00817D88 /* README.md in Resources */,
 				002983A5196F64E800817D88 /* Podfile in Resources */,
 				00298383196F64CC00817D88 /* Main_iPad.storyboard in Resources */,
 				00298388196F64CC00817D88 /* Images.xcassets in Resources */,
