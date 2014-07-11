@@ -8,6 +8,7 @@
 
 #import "CineAppDelegate.h"
 #import "CineSignInViewController.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation CineAppDelegate
 
@@ -16,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+
     UIStoryboard *storyboard = self.window.rootViewController.storyboard;
     signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
     [signInViewController initGithubOAuth];
@@ -45,6 +48,7 @@
 - (void)signOut
 {
     [signInViewController signOut];
+    user = nil;
 }
 
 - (BOOL)signedIn

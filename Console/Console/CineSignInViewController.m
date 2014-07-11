@@ -10,6 +10,7 @@
 #import "CineWebViewController.h"
 #import "CineAppDelegate.h"
 #import "AFNetworking.h"
+#import "NSURL+QueryParser.h"
 
 
 @interface CineSignInViewController ()
@@ -18,6 +19,9 @@
 
 @implementation CineSignInViewController
 
+@synthesize signInView;
+@synthesize activityIndicatorView;
+@synthesize statusLabel;
 @synthesize emailField;
 @synthesize passwordField;
 @synthesize signInButton;
@@ -46,6 +50,7 @@
 }
 
 - (IBAction)submitForm:(id)sender {
+    [self setBusy:YES];
     if (passwordField.isEnabled) {
         [self signInOrSignUp];
     } else {
@@ -87,6 +92,22 @@
     }];
 }
 
+#pragma UI stuff
+
+- (void)setBusy:(BOOL)busy
+{
+    if (busy) {
+        statusLabel.text = @"";
+        [signInView setUserInteractionEnabled:NO];
+        [signInView setHidden:YES];
+        [activityIndicatorView startAnimating];
+    } else {
+        [activityIndicatorView stopAnimating];
+        [signInView setHidden:NO];
+        [signInView setUserInteractionEnabled:YES];
+    }
+}
+
 #pragma Sign-in / Sign-up stuff
 
 - (void)signInOrSignUp
@@ -101,10 +122,12 @@
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         CineUser *user = [appDelegate signIn:response];
         NSLog(@"%@ logged in", user.email);
-        [self signOut];
+        [self setBusy:NO];
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
+        statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
+        [self setBusy:NO];
     }];
 }
 
@@ -136,8 +159,11 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:@"https://www.cine.io/api/1/-/password-change-request" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
         NSLog(@"%@", response);
+        [self setBusy:NO];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
+        statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
+        [self setBusy:NO];
     }];
 }
 
@@ -170,8 +196,8 @@
                                                        queue:nil
                                                   usingBlock:^(NSNotification *aNotification){
                                                       NSError *error = [aNotification.userInfo objectForKey:NXOAuth2AccountStoreErrorKey];
-                                                      // TODO: handle GitHub sign-in failed
                                                       NSLog(@"%@", error);
+                                                      statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
                                                   }];
 }
 
@@ -181,6 +207,16 @@
     [[NXOAuth2AccountStore sharedStore] handleRedirectURL:url];
     
     // TODO: authenticate with cine
+    NSDictionary *formData = @{ @"code": [url parseQuery][@"code"],
+                                @"state": @"{\"plan\":\"free\"}" };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"https://www.cine.io/auth/github/callback" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"%@", response);
+        [self setBusy:NO];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        [self setBusy:NO];
+    }];
 }
 
 - (void)handleGithubSignInSuccess:(NXOAuth2Account *)account
@@ -199,6 +235,7 @@
                                                                         options:kNilOptions
                                                                           error:&jsonError];
                    NSLog(@"User email: %@", json[@"email"]);
+                   [self setBusy:NO];
                }];
 }
 

@@ -11,6 +11,10 @@
 
 @interface CineSignInViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *signInView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *signInGithubButton;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
