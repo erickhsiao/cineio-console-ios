@@ -7,13 +7,27 @@
 //
 
 #import "CineAppDelegate.h"
+#import "CineSignInViewController.h"
 
 @implementation CineAppDelegate
 
+@synthesize loggedIn;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    if (!loggedIn) {
+        [self showSignInScreen:YES];
+    }
+    
     return YES;
+}
+
+- (void)showSignInScreen:(BOOL)animated
+{
+    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+    CineSignInViewController *viewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
+    [self.window makeKeyAndVisible];
+    [self.window.rootViewController presentViewController:viewController animated:animated completion:nil];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

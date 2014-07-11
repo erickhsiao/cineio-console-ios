@@ -1,5 +1,5 @@
 //
-//  CineViewController.h
+//  CineWebViewController.h
 //  Console
 //
 //  Created by Jeffrey Wescott on 7/10/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CineViewController : UITabBarController
+@interface CineWebViewController : UIViewController
 
 @end
