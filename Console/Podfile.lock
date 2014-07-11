@@ -44,6 +44,7 @@ PODS:
     - UriParser-cpp (~> 0.1.3)
 
 DEPENDENCIES:
+  - AFNetworking (~> 2.0)
   - cineio-ios (~> 0.1.7)
 
 SPEC CHECKSUMS:
