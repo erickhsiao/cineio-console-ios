@@ -8,6 +8,7 @@
 
 #import "CineProjectsTableViewController.h"
 #import "cineio/CineIO.h"
+#import "CineAppDelegate.h"
 #import "CineProjectsTableViewController.h"
 #import "CineStreamsTableViewController.h"
 
@@ -59,7 +60,7 @@
     return projects ? [projects count] : 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:  (NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ProjectCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -69,6 +70,13 @@
     cell.textLabel.text = project.name ? project.name : project.projectId;
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSString *headerTitle = appDelegate.user ? ((appDelegate.user.name && appDelegate.user.name.length) ? appDelegate.user.name : appDelegate.user.email) : @"Please wait ...";
+    return headerTitle;
 }
 
 #pragma mark - Data loaders

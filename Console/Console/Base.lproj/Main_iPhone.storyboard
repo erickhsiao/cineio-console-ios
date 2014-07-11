@@ -287,7 +287,7 @@
                             <outlet property="delegate" destination="k5Q-pc-p7f" id="PDm-wK-jVa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="E97-j9-7sI"/>
+                    <navigationItem key="navigationItem" title="Projects" id="E97-j9-7sI"/>
                     <nil key="simulatedTopBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOi-N5-2ET" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -317,7 +317,7 @@
                             <outlet property="delegate" destination="cHM-YM-Mbo" id="PJ4-oW-Ni5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="tsu-mh-2VV"/>
+                    <navigationItem key="navigationItem" title="Streams" id="tsu-mh-2VV"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh1-8Z-1wI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
