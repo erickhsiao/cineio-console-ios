@@ -141,17 +141,6 @@
     }
 }
 
-- (void)getProjects
-{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"%@", response);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-    }];
-}
-
 - (void)recoverPassword
 {
     NSLog(@"recover password");

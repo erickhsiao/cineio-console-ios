@@ -15,7 +15,6 @@
 		0029837D196F64CC00817D88 /* CineAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0029837C196F64CC00817D88 /* CineAppDelegate.m */; };
 		00298380196F64CC00817D88 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0029837E196F64CC00817D88 /* Main_iPhone.storyboard */; };
 		00298383196F64CC00817D88 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00298381196F64CC00817D88 /* Main_iPad.storyboard */; };
-		00298386196F64CC00817D88 /* CineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00298385196F64CC00817D88 /* CineViewController.m */; };
 		00298388196F64CC00817D88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00298387196F64CC00817D88 /* Images.xcassets */; };
 		0029838F196F64CC00817D88 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0029838E196F64CC00817D88 /* XCTest.framework */; };
 		00298390196F64CC00817D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0029836C196F64CC00817D88 /* Foundation.framework */; };
@@ -27,6 +26,8 @@
 		002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AA196F8F8A00817D88 /* CineSignInViewController.m */; };
 		002983AD196FE09A00817D88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002983AC196FE09A00817D88 /* README.md */; };
 		002983B019704CD900817D88 /* CineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AF19704CD900817D88 /* CineUser.m */; };
+		00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B41970930700857375 /* CineProjectsTableViewController.m */; };
+		00ADC6B81970931C00857375 /* CineStreamsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */; };
 		230D20A7DCA440E6816B1608 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755E6D300C04A989719F867 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +54,6 @@
 		0029837C196F64CC00817D88 /* CineAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CineAppDelegate.m; sourceTree = "<group>"; };
 		0029837F196F64CC00817D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		00298382196F64CC00817D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		00298384196F64CC00817D88 /* CineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CineViewController.h; sourceTree = "<group>"; };
-		00298385196F64CC00817D88 /* CineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CineViewController.m; sourceTree = "<group>"; };
 		00298387196F64CC00817D88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0029838D196F64CC00817D88 /* ConsoleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConsoleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0029838E196F64CC00817D88 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -69,6 +68,10 @@
 		002983AC196FE09A00817D88 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		002983AE19704CD900817D88 /* CineUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineUser.h; sourceTree = "<group>"; };
 		002983AF19704CD900817D88 /* CineUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineUser.m; sourceTree = "<group>"; };
+		00ADC6B31970930700857375 /* CineProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineProjectsTableViewController.h; sourceTree = "<group>"; };
+		00ADC6B41970930700857375 /* CineProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineProjectsTableViewController.m; sourceTree = "<group>"; };
+		00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineStreamsTableViewController.h; sourceTree = "<group>"; };
+		00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineStreamsTableViewController.m; sourceTree = "<group>"; };
 		24183C3AA3FC48D8A391365B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9755E6D300C04A989719F867 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -145,8 +148,10 @@
 				002983A7196F8F4000817D88 /* CineWebViewController.m */,
 				002983AE19704CD900817D88 /* CineUser.h */,
 				002983AF19704CD900817D88 /* CineUser.m */,
-				00298384196F64CC00817D88 /* CineViewController.h */,
-				00298385196F64CC00817D88 /* CineViewController.m */,
+				00ADC6B31970930700857375 /* CineProjectsTableViewController.h */,
+				00ADC6B41970930700857375 /* CineProjectsTableViewController.m */,
+				00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */,
+				00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */,
 				00298387196F64CC00817D88 /* Images.xcassets */,
 				00298373196F64CC00817D88 /* Supporting Files */,
 			);
@@ -318,7 +323,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00298386196F64CC00817D88 /* CineViewController.m in Sources */,
+				00ADC6B81970931C00857375 /* CineStreamsTableViewController.m in Sources */,
+				00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */,
 				002983B019704CD900817D88 /* CineUser.m in Sources */,
 				00298379196F64CC00817D88 /* main.m in Sources */,
 				002983A8196F8F4000817D88 /* CineWebViewController.m in Sources */,
@@ -457,8 +463,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24183C3AA3FC48D8A391365B /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Console/Console-Prefix.pch";
 				INFOPLIST_FILE = "Console/Console-Info.plist";
@@ -471,8 +479,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 24183C3AA3FC48D8A391365B /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Console/Console-Prefix.pch";
 				INFOPLIST_FILE = "Console/Console-Info.plist";
