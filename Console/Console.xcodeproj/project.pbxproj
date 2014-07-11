@@ -26,6 +26,7 @@
 		002983A8196F8F4000817D88 /* CineWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983A7196F8F4000817D88 /* CineWebViewController.m */; };
 		002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AA196F8F8A00817D88 /* CineSignInViewController.m */; };
 		002983AD196FE09A00817D88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002983AC196FE09A00817D88 /* README.md */; };
+		002983B019704CD900817D88 /* CineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AF19704CD900817D88 /* CineUser.m */; };
 		230D20A7DCA440E6816B1608 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755E6D300C04A989719F867 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		002983A9196F8F8A00817D88 /* CineSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineSignInViewController.h; sourceTree = "<group>"; };
 		002983AA196F8F8A00817D88 /* CineSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineSignInViewController.m; sourceTree = "<group>"; };
 		002983AC196FE09A00817D88 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		002983AE19704CD900817D88 /* CineUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineUser.h; sourceTree = "<group>"; };
+		002983AF19704CD900817D88 /* CineUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineUser.m; sourceTree = "<group>"; };
 		24183C3AA3FC48D8A391365B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9755E6D300C04A989719F867 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -134,12 +137,14 @@
 			children = (
 				0029837B196F64CC00817D88 /* CineAppDelegate.h */,
 				0029837C196F64CC00817D88 /* CineAppDelegate.m */,
+				00298381196F64CC00817D88 /* Main_iPad.storyboard */,
 				0029837E196F64CC00817D88 /* Main_iPhone.storyboard */,
 				002983A9196F8F8A00817D88 /* CineSignInViewController.h */,
 				002983AA196F8F8A00817D88 /* CineSignInViewController.m */,
 				002983A6196F8F4000817D88 /* CineWebViewController.h */,
 				002983A7196F8F4000817D88 /* CineWebViewController.m */,
-				00298381196F64CC00817D88 /* Main_iPad.storyboard */,
+				002983AE19704CD900817D88 /* CineUser.h */,
+				002983AF19704CD900817D88 /* CineUser.m */,
 				00298384196F64CC00817D88 /* CineViewController.h */,
 				00298385196F64CC00817D88 /* CineViewController.m */,
 				00298387196F64CC00817D88 /* Images.xcassets */,
@@ -314,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00298386196F64CC00817D88 /* CineViewController.m in Sources */,
+				002983B019704CD900817D88 /* CineUser.m in Sources */,
 				00298379196F64CC00817D88 /* main.m in Sources */,
 				002983A8196F8F4000817D88 /* CineWebViewController.m in Sources */,
 				002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */,

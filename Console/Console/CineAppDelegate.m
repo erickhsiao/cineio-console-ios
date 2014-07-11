@@ -11,8 +11,8 @@
 
 @implementation CineAppDelegate
 
-@synthesize loggedIn;
 @synthesize signInViewController;
+@synthesize user;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -20,8 +20,7 @@
     signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
     [signInViewController initGithubOAuth];
     
-    if (!loggedIn) {
-        // show login screen
+    if (![self signedIn]) {
         [self showSignInScreen:NO];
     }
     
@@ -31,12 +30,26 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSLog(@"url recieved: %@", url);
     if ([url.host isEqualToString:@"github-callback"]) {
-        UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-        CineSignInViewController *signInVC = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
-        [signInVC handleGithubCallback:url];
+        [signInViewController handleGithubCallback:url];
     }
     
     return YES;
+}
+
+- (CineUser *)signIn:(NSDictionary *)userAttributes
+{
+    user = [[CineUser alloc] initWithAttributes:userAttributes];
+    return user;
+}
+
+- (void)signOut
+{
+    [signInViewController signOut];
+}
+
+- (BOOL)signedIn
+{
+    return !!user;
 }
 
 - (void)showSignInScreen:(BOOL)animated
@@ -44,7 +57,7 @@
     [self.window makeKeyAndVisible];
     [self.window.rootViewController presentViewController:signInViewController animated:animated completion:nil];
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

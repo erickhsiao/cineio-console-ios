@@ -8,6 +8,7 @@
 
 #import "CineSignInViewController.h"
 #import "CineWebViewController.h"
+#import "CineAppDelegate.h"
 #import "AFNetworking.h"
 
 
@@ -97,7 +98,32 @@
        @"plan": @"free" };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:@"https://www.cine.io/login" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
+        CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        CineUser *user = [appDelegate signIn:response];
+        NSLog(@"%@ logged in", user.email);
+        [self signOut];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+- (void)signOut
+{
+    // AFNetworking uses standard cookie storage, so to log out, just delete our cookies
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookies = [cookieStorage cookies];
+    for (NSHTTPCookie *cookie in cookies) {
+        [cookieStorage deleteCookie:cookie];
+    }
+}
+
+- (void)getProjects
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
         NSLog(@"%@", response);
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
     }];
@@ -144,14 +170,17 @@
                                                        queue:nil
                                                   usingBlock:^(NSNotification *aNotification){
                                                       NSError *error = [aNotification.userInfo objectForKey:NXOAuth2AccountStoreErrorKey];
-                                                      // GitHub sign-in failed
+                                                      // TODO: handle GitHub sign-in failed
                                                       NSLog(@"%@", error);
                                                   }];
 }
 
 - (void)handleGithubCallback:(NSURL *)url
 {
+    // handle on our side
     [[NXOAuth2AccountStore sharedStore] handleRedirectURL:url];
+    
+    // TODO: authenticate with cine
 }
 
 - (void)handleGithubSignInSuccess:(NXOAuth2Account *)account

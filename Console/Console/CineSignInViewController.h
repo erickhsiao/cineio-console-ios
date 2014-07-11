@@ -25,6 +25,7 @@
 - (IBAction)toggleForm:(id)sender;
 - (IBAction)showTermsOfService:(id)sender;
 
+- (void)signOut;
 - (void)initGithubOAuth;
 - (void)handleGithubCallback:(NSURL *)url;
 - (void)handleGithubSignInSuccess:(NXOAuth2Account *)account;
