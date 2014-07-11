@@ -12,11 +12,28 @@
 @implementation CineAppDelegate
 
 @synthesize loggedIn;
+@synthesize signInViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+    signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
+    [signInViewController initGithubOAuth];
+    
     if (!loggedIn) {
-        [self showSignInScreen:YES];
+        // show login screen
+        [self showSignInScreen:NO];
+    }
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSLog(@"url recieved: %@", url);
+    if ([url.host isEqualToString:@"github-callback"]) {
+        UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+        CineSignInViewController *signInVC = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
+        [signInVC handleGithubCallback:url];
     }
     
     return YES;
@@ -24,10 +41,8 @@
 
 - (void)showSignInScreen:(BOOL)animated
 {
-    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-    CineSignInViewController *viewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
     [self.window makeKeyAndVisible];
-    [self.window.rootViewController presentViewController:viewController animated:animated completion:nil];
+    [self.window.rootViewController presentViewController:signInViewController animated:animated completion:nil];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

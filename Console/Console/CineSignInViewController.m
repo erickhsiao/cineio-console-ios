@@ -10,6 +10,7 @@
 #import "CineWebViewController.h"
 #import "AFNetworking.h"
 
+
 @interface CineSignInViewController ()
 
 @end
@@ -47,7 +48,7 @@
 }
 
 - (IBAction)signInGithub:(id)sender {
-    NSLog(@"signInGithub");
+    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"GitHub"];
 }
 
 - (IBAction)toggleForm:(id)sender {
@@ -78,6 +79,64 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [webViewController presentHTML:[error localizedDescription]];
     }];
+}
+
+#pragma GitHub OAuth stuff
+
+- (void)initGithubOAuth
+{
+    NSDictionary *gitHubConfigDict =
+        @{ kNXOAuth2AccountStoreConfigurationClientID: @"d672e68c08a4e108b562",
+           kNXOAuth2AccountStoreConfigurationSecret: @"7fc58f25f68ecda810b1fa9b293e99fda65d6b39",
+           kNXOAuth2AccountStoreConfigurationScope: [NSSet setWithObjects:@"user", nil],
+           kNXOAuth2AccountStoreConfigurationAuthorizeURL: [NSURL URLWithString:@"https://github.com/login/oauth/authorize"],
+           kNXOAuth2AccountStoreConfigurationTokenURL: [NSURL URLWithString:@"https://github.com/login/oauth/access_token"],
+           kNXOAuth2AccountStoreConfigurationRedirectURL: [NSURL URLWithString:@"cineioconsole://github-callback"],
+           kNXOAuth2AccountStoreConfigurationTokenType: @"Bearer" };
+    
+    [[NXOAuth2AccountStore sharedStore] setConfiguration:gitHubConfigDict forAccountType:@"GitHub"];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
+                                                      object:[NXOAuth2AccountStore sharedStore]
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *aNotification) {
+                                                      // GitHub sign-in succeeded
+                                                      NXOAuth2Account *account = aNotification.userInfo[NXOAuth2AccountStoreNewAccountUserInfoKey];
+                                                      
+                                                      [self handleGithubSignInSuccess:account];
+                                                  }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreDidFailToRequestAccessNotification
+                                                      object:[NXOAuth2AccountStore sharedStore]
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *aNotification){
+                                                      NSError *error = [aNotification.userInfo objectForKey:NXOAuth2AccountStoreErrorKey];
+                                                      // GitHub sign-in failed
+                                                      NSLog(@"%@", error);
+                                                  }];
+}
+
+- (void)handleGithubCallback:(NSURL *)url
+{
+    [[NXOAuth2AccountStore sharedStore] handleRedirectURL:url];
+}
+
+- (void)handleGithubSignInSuccess:(NXOAuth2Account *)account
+{
+    [NXOAuth2Request performMethod:@"GET"
+                        onResource:[NSURL URLWithString:@"https://api.github.com/user"]
+                   usingParameters:nil
+                       withAccount:account
+               sendProgressHandler:^(unsigned long long bytesSend, unsigned long long bytesTotal) {
+                   // e.g., update a progress indicator
+               }
+               responseHandler:^(NSURLResponse *response, NSData *responseData, NSError *error){
+                   // Process the response
+                   NSError* jsonError;
+                   NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData
+                                                                        options:kNilOptions
+                                                                          error:&jsonError];
+                   NSLog(@"User email: %@", json[@"email"]);
+               }];
 }
 
 @end

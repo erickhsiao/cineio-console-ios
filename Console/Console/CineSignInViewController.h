@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NXOAuth2.h"
 
 @interface CineSignInViewController : UIViewController
 
@@ -23,5 +24,10 @@
 - (IBAction)signInGithub:(id)sender;
 - (IBAction)toggleForm:(id)sender;
 - (IBAction)showTermsOfService:(id)sender;
+
+- (void)initGithubOAuth;
+- (void)handleGithubCallback:(NSURL *)url;
+- (void)handleGithubSignInSuccess:(NXOAuth2Account *)account;
+
 
 @end

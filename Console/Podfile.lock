@@ -37,6 +37,7 @@ PODS:
     - AFNetworking (~> 2.2.4)
     - VideoCore (~> 0.1.6)
   - glm (0.9.4.6)
+  - NXOAuth2Client (1.2.6)
   - UriParser-cpp (0.1.3)
   - VideoCore (0.1.8):
     - boost (~> 1.51.0)
@@ -46,12 +47,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - cineio-ios (~> 0.1.7)
+  - NXOAuth2Client (~> 1.2.6)
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   boost: 581038adda16d11045576013ad27e3eeeabc2d10
   cineio-ios: 57362652bb46c71a0d4af11f64e115dc27d38e94
   glm: 840dd35fe3cc445935accf81ffd1384dad532ee7
+  NXOAuth2Client: f9a3efde1cce92c92fd1518070caf305bd363ef4
   UriParser-cpp: e6df3fd87445ba4ab37a72acafb4f03bc39db524
   VideoCore: 29c544719ee942e70bdb98cf3d425e8332605663
 
