@@ -351,6 +351,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Xla-DC-qui" kind="modal" identifier="playStream" id="a10-hv-I4B"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V73-WU-W3G">
                                 <rect key="frame" x="164" y="460" width="136" height="40"/>
@@ -365,6 +368,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="jzu-YQ-ZjK" kind="modal" identifier="publishStream" id="OZN-ZE-bvq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dhx-46-feb">
                                 <rect key="frame" x="20" y="508" width="280" height="40"/>
@@ -441,6 +447,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja6-X7-9qa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1456" y="78"/>
+        </scene>
+        <!--Cine Player View Controller-->
+        <scene sceneID="f7h-NJ-C1m">
+            <objects>
+                <viewController id="Xla-DC-qui" customClass="CinePlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ga1-Uo-w6W"/>
+                        <viewControllerLayoutGuide type="bottom" id="u6i-44-J2C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rIV-iJ-XMS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzR-yj-bNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1919" y="-323"/>
+        </scene>
+        <!--Cine Publisher View Controller-->
+        <scene sceneID="TLj-47-kCa">
+            <objects>
+                <viewController id="jzu-YQ-ZjK" customClass="CinePublisherViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FJv-4H-WEk"/>
+                        <viewControllerLayoutGuide type="bottom" id="SdS-5X-mSi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m70-Uf-AIg" customClass="CineBroadcasterView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HjG-Li-55j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1919" y="357"/>
         </scene>
         <!--Navigation Controller - Projects-->
         <scene sceneID="xm7-bL-eke">
