@@ -28,6 +28,7 @@
 		002983B019704CD900817D88 /* CineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AF19704CD900817D88 /* CineUser.m */; };
 		00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B41970930700857375 /* CineProjectsTableViewController.m */; };
 		00ADC6B81970931C00857375 /* CineStreamsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */; };
+		00ADC6BB1970B59B00857375 /* CineStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6BA1970B59B00857375 /* CineStreamViewController.m */; };
 		230D20A7DCA440E6816B1608 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755E6D300C04A989719F867 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +61,7 @@
 		00298396196F64CC00817D88 /* ConsoleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ConsoleTests-Info.plist"; sourceTree = "<group>"; };
 		00298398196F64CC00817D88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0029839A196F64CC00817D88 /* ConsoleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConsoleTests.m; sourceTree = "<group>"; };
-		002983A4196F64E800817D88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		002983A4196F64E800817D88 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		002983A6196F8F4000817D88 /* CineWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineWebViewController.h; sourceTree = "<group>"; };
 		002983A7196F8F4000817D88 /* CineWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineWebViewController.m; sourceTree = "<group>"; };
 		002983A9196F8F8A00817D88 /* CineSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineSignInViewController.h; sourceTree = "<group>"; };
@@ -72,6 +73,8 @@
 		00ADC6B41970930700857375 /* CineProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineProjectsTableViewController.m; sourceTree = "<group>"; };
 		00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineStreamsTableViewController.h; sourceTree = "<group>"; };
 		00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineStreamsTableViewController.m; sourceTree = "<group>"; };
+		00ADC6B91970B59B00857375 /* CineStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineStreamViewController.h; sourceTree = "<group>"; };
+		00ADC6BA1970B59B00857375 /* CineStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineStreamViewController.m; sourceTree = "<group>"; };
 		24183C3AA3FC48D8A391365B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9755E6D300C04A989719F867 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -152,6 +155,8 @@
 				00ADC6B41970930700857375 /* CineProjectsTableViewController.m */,
 				00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */,
 				00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */,
+				00ADC6B91970B59B00857375 /* CineStreamViewController.h */,
+				00ADC6BA1970B59B00857375 /* CineStreamViewController.m */,
 				00298387196F64CC00817D88 /* Images.xcassets */,
 				00298373196F64CC00817D88 /* Supporting Files */,
 			);
@@ -330,6 +335,7 @@
 				002983A8196F8F4000817D88 /* CineWebViewController.m in Sources */,
 				002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */,
 				0029837D196F64CC00817D88 /* CineAppDelegate.m in Sources */,
+				00ADC6BB1970B59B00857375 /* CineStreamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

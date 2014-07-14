@@ -7,6 +7,7 @@
 //
 
 #import "CineStreamsTableViewController.h"
+#import "CineStreamViewController.h"
 #import "cineio/CineIO.h"
 
 @interface CineStreamsTableViewController ()
@@ -39,6 +40,12 @@
 
     [self loadStreams];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadStreams];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -79,7 +86,6 @@
 
 - (void)loadStreams
 {
-    NSLog(@"project: %@ / %@", project.name, project.projectId);
     CineClient *cine = [[CineClient alloc] initWithSecretKey:project.secretKey];
     [cine getStreamsWithCompletionHandler:^(NSError *err, NSArray *loadedStreams) {
         streams = [[NSMutableArray alloc] initWithArray:loadedStreams];
@@ -87,15 +93,15 @@
     }];
 }
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"segue: %@", segue.identifier);
+    if ([segue.identifier isEqualToString:@"showStreamDetail"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        CineStreamViewController *streamViewController = segue.destinationViewController;
+        streamViewController.stream = [streams objectAtIndex:indexPath.row];
+    }
 }
-*/
 
 @end
