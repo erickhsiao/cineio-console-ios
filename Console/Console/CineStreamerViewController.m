@@ -20,10 +20,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Player";
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
     [self startStreaming];
 }
 

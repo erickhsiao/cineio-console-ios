@@ -23,7 +23,6 @@
 
     UIStoryboard *storyboard = self.window.rootViewController.storyboard;
     signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
-    [signInViewController initGithubOAuth];
     
     if (![self signedIn]) {
         [self showSignInScreen:NO];
@@ -35,8 +34,8 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSLog(@"url recieved: %@", url);
-    if ([url.host isEqualToString:@"github-callback"]) {
-        [signInViewController handleGithubCallback:url];
+    if ([url.host isEqualToString:@"login"]) {
+        [signInViewController handleLogin:url];
     }
     
     return YES;

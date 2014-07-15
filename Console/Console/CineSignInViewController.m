@@ -13,7 +13,10 @@
 #import "NSURL+QueryParser.h"
 
 
-@interface CineSignInViewController ()
+@interface CineSignInViewController () <UIWebViewDelegate>
+{
+    CineWebViewController *_webViewController;
+}
 
 @end
 
@@ -39,6 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIWindow *window = [[UIApplication sharedApplication] delegate].window;
+    UIStoryboard *storyboard = window.rootViewController.storyboard;
+    _webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -59,7 +65,16 @@
 }
 
 - (IBAction)signInGithub:(id)sender {
-    [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:@"GitHub"];
+    [self setBusy:YES];
+
+    // modally show the web view controller
+    [self presentViewController:_webViewController animated:YES completion:nil];
+
+    // request the Github authentication URL
+    NSURLRequest *requestUrl = [NSURLRequest requestWithURL:
+                                [NSURL URLWithString:@"https://www.cine.io/auth/github?client=iOS&plan=free"]];
+    _webViewController.webView.delegate = self;
+    [_webViewController.webView loadRequest:requestUrl];
 }
 
 - (IBAction)toggleForm:(id)sender {
@@ -116,7 +131,8 @@
     NSDictionary *formData =
     @{ @"username": emailField.text,
        @"password": passwordField.text,
-       @"plan": @"free" };
+       @"plan": @"free",
+       @"client": @"iOS" };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:@"https://www.cine.io/login" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -158,74 +174,57 @@
 
 #pragma GitHub OAuth stuff
 
-- (void)initGithubOAuth
+- (void)handleLogin:(NSURL *)url
 {
-    NSDictionary *gitHubConfigDict =
-        @{ kNXOAuth2AccountStoreConfigurationClientID: @"d672e68c08a4e108b562",
-           kNXOAuth2AccountStoreConfigurationSecret: @"7fc58f25f68ecda810b1fa9b293e99fda65d6b39",
-           kNXOAuth2AccountStoreConfigurationScope: [NSSet setWithObjects:@"user:email", nil],
-           kNXOAuth2AccountStoreConfigurationAuthorizeURL: [NSURL URLWithString:@"https://github.com/login/oauth/authorize"],
-           kNXOAuth2AccountStoreConfigurationTokenURL: [NSURL URLWithString:@"https://github.com/login/oauth/access_token"],
-           kNXOAuth2AccountStoreConfigurationRedirectURL: [NSURL URLWithString:@"cineioconsole://github-callback"],
-           kNXOAuth2AccountStoreConfigurationTokenType: @"Bearer" };
-    
-    [[NXOAuth2AccountStore sharedStore] setConfiguration:gitHubConfigDict forAccountType:@"GitHub"];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
-                                                      object:[NXOAuth2AccountStore sharedStore]
-                                                       queue:nil
-                                                  usingBlock:^(NSNotification *aNotification) {
-                                                      // GitHub sign-in succeeded
-                                                      NXOAuth2Account *account = aNotification.userInfo[NXOAuth2AccountStoreNewAccountUserInfoKey];
-                                                      
-                                                      [self handleGithubSignInSuccess:account];
-                                                  }];
-    [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreDidFailToRequestAccessNotification
-                                                      object:[NXOAuth2AccountStore sharedStore]
-                                                       queue:nil
-                                                  usingBlock:^(NSNotification *aNotification){
-                                                      NSError *error = [aNotification.userInfo objectForKey:NXOAuth2AccountStoreErrorKey];
-                                                      NSLog(@"%@", error);
-                                                      statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
-                                                  }];
-}
-
-- (void)handleGithubCallback:(NSURL *)url
-{
-    // handle on our side
-    [[NXOAuth2AccountStore sharedStore] handleRedirectURL:url];
-    
-    // TODO: authenticate with cine
-    NSDictionary *formData = @{ @"code": [url parseQuery][@"code"],
-                                @"state": @"{\"plan\":\"free\"}" };
+    NSDictionary *queryString = @{ @"masterKey": [url parseQuery][@"masterKey"] };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"https://www.cine.io/auth/github/callback" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"%@", response);
-        [self setBusy:NO];
+    [manager GET:@"https://www.cine.io/api/1/-/user" parameters:queryString success:^(AFHTTPRequestOperation *operation, id response) {
+        
+        // sign-in
+        CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        CineUser *user = [appDelegate signIn:response];
+        NSLog(@"%@ logged in", user.email);
+
+        // if the web view controller is open, close it
+        if (_webViewController.isViewLoaded && _webViewController.view.window) {
+            [_webViewController dismissViewControllerAnimated:YES completion:^{
+                [self setBusy:NO];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+        } else {
+            [self setBusy:NO];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
+        statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
         [self setBusy:NO];
     }];
 }
 
-- (void)handleGithubSignInSuccess:(NXOAuth2Account *)account
+#pragma mark - Optional UIWebViewDelegate delegate methods
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    [NXOAuth2Request performMethod:@"GET"
-                        onResource:[NSURL URLWithString:@"https://api.github.com/user"]
-                   usingParameters:nil
-                       withAccount:account
-               sendProgressHandler:^(unsigned long long bytesSend, unsigned long long bytesTotal) {
-                   // e.g., update a progress indicator
-               }
-               responseHandler:^(NSURLResponse *response, NSData *responseData, NSError *error){
-                   // Process the response
-                   NSError* jsonError;
-                   NSDictionary* json = [NSJSONSerialization JSONObjectWithData:responseData
-                                                                        options:kNilOptions
-                                                                          error:&jsonError];
-                   NSLog(@"User email: %@", json[@"email"]);
-                   [self setBusy:NO];
-               }];
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    NSLog(@"requesting URL: %@", webView.request.URL.absoluteString);
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSLog(@"loaded URL: %@", webView.request.URL.absoluteString);
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSLog(@"failed to load URL: %@ (%@)", webView.request.URL.absoluteString, error);
 }
 
 @end

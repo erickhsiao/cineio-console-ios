@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy, readonly) NSString *userId;
 @property (nonatomic, copy, readonly) NSString *email;
+@property (nonatomic, copy, readonly) NSString *masterKey;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *firstName;
 @property (nonatomic, copy, readonly) NSString *lastName;

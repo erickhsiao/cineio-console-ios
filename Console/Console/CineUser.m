@@ -12,6 +12,7 @@
 
 @synthesize userId;
 @synthesize email;
+@synthesize masterKey;
 @synthesize name;
 @synthesize firstName;
 @synthesize lastName;
@@ -23,6 +24,7 @@
     if (self = [super init]) {
         userId = [userAttributes[@"id"] copy];
         email = [userAttributes[@"email"] copy];
+        masterKey = [userAttributes[@"masterKey"] copy];
         name = [userAttributes[@"name"] copy];
         firstName = [userAttributes[@"firstName"] copy];
         lastName = [userAttributes[@"lastName"] copy];
