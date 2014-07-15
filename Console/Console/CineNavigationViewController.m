@@ -32,19 +32,15 @@
 
 - (BOOL)shouldAutorotate {
     if ([self.topViewController isKindOfClass:[CinePublisherViewController class]]) {
-        NSLog(@"shouldAutorotate NO");
         return NO;
     }
-    NSLog(@"shouldAutorotate YES");
     return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
     if ([self.topViewController isKindOfClass:[CinePublisherViewController class]]) {
-        NSLog(@"supportedInterfaceOrientations portrait");
         return UIInterfaceOrientationMaskPortrait;
     }
-    NSLog(@"supportedInterfaceOrientations all");
     return UIInterfaceOrientationMaskAll;
 }
 
