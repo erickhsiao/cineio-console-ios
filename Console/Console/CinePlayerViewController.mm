@@ -49,7 +49,7 @@
                                           error:&err];
         statusCode = res.statusCode;
         numTries++;
-        NSLog(@"statusCode = %d", statusCode);
+        NSLog(@"statusCode = %ld", (long)statusCode);
         [NSThread sleepForTimeInterval:1.0];
     }
     if (statusCode == 200) {
