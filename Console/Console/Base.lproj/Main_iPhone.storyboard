@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="156" width="320" height="302"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWA-Oi-iyc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWA-Oi-iyc">
                                         <rect key="frame" x="20" y="28" width="280" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="deviceRGB"/>
@@ -58,20 +58,20 @@
                                             <action selector="submitForm:" destination="GXF-qB-L8c" eventType="touchUpInside" id="KwG-LI-d7s"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-6W-MN1">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rog-6W-MN1">
                                         <rect key="frame" x="152" y="76" width="16" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hic-yR-wsp">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hic-yR-wsp">
                                         <rect key="frame" x="20" y="105" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAG-0W-b1K">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAG-0W-b1K">
                                         <rect key="frame" x="20" y="143" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -126,7 +126,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="IWA-Oi-iyc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v1o-CR-xcZ" secondAttribute="leading" constant="20" id="1rm-bF-w4x"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cu7-h3-fpX" secondAttribute="bottom" constant="28" id="2vo-nf-oMA"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cu7-h3-fpX" secondAttribute="bottom" constant="22" id="2vo-nf-oMA"/>
                                     <constraint firstItem="qAG-0W-b1K" firstAttribute="leading" secondItem="v1o-CR-xcZ" secondAttribute="leading" constant="20" id="4Lj-4N-Tzb"/>
                                     <constraint firstItem="IWA-Oi-iyc" firstAttribute="leading" secondItem="v1o-CR-xcZ" secondAttribute="leading" constant="20" id="684-Ig-1kp"/>
                                     <constraint firstItem="hic-yR-wsp" firstAttribute="top" secondItem="Rog-6W-MN1" secondAttribute="bottom" constant="8" id="6Rx-Cb-Hcv"/>
@@ -148,7 +148,7 @@
                                     <constraint firstAttribute="centerX" secondItem="e0r-Ne-M0p" secondAttribute="centerX" id="fpe-xA-DOL"/>
                                     <constraint firstAttribute="centerX" secondItem="qAG-0W-b1K" secondAttribute="centerX" id="gA1-RC-FUU"/>
                                     <constraint firstItem="e0r-Ne-M0p" firstAttribute="top" secondItem="v1o-CR-xcZ" secondAttribute="top" id="hFA-v5-XYW"/>
-                                    <constraint firstItem="IWA-Oi-iyc" firstAttribute="top" secondItem="v1o-CR-xcZ" secondAttribute="top" constant="20" id="hIS-Ez-Obm"/>
+                                    <constraint firstItem="IWA-Oi-iyc" firstAttribute="top" secondItem="v1o-CR-xcZ" secondAttribute="top" constant="28" id="hIS-Ez-Obm"/>
                                     <constraint firstAttribute="trailing" secondItem="YTg-47-gnO" secondAttribute="trailing" constant="20" id="lNx-Pj-tiL"/>
                                     <constraint firstItem="or4-rq-eNr" firstAttribute="top" secondItem="iCL-Dp-xsN" secondAttribute="bottom" constant="8" id="mfX-Hr-TWg"/>
                                     <constraint firstItem="or4-rq-eNr" firstAttribute="top" secondItem="iCL-Dp-xsN" secondAttribute="bottom" constant="8" id="nUf-Rv-9jR"/>
@@ -338,8 +338,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uy-uh-NWg">
-                                <rect key="frame" x="20" y="460" width="136" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Uy-uh-NWg">
+                                <rect key="frame" x="20" y="460" width="137" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.074509806930000005" green="0.54901963470000004" blue="0.52941179279999995" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
