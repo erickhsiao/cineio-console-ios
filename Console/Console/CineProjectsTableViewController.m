@@ -89,18 +89,29 @@
 
 - (void)loadProjects
 {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-        NSArray *projectsJson = response;
-        projects = [[NSMutableArray alloc] init];
-        for (NSDictionary *attrs in projectsJson) {
-            CineProject *project = [[CineProject alloc] initWithAttributes:attrs];
-            [projects addObject:project];
-        }
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
-    }];
+    CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    if (appDelegate.signedIn) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
+            NSArray *projectsJson = response;
+            projects = [[NSMutableArray alloc] init];
+            for (NSDictionary *attrs in projectsJson) {
+                CineProject *project = [[CineProject alloc] initWithAttributes:attrs];
+                [projects addObject:project];
+            }
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error loading projects: %@", error);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                            message:@"There was a problem while trying to load your projects."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }];
+    } else {
+        NSLog(@"Can't load projects. User is not yet signed-in.");
+    }
 }
 
 #pragma mark - Navigation

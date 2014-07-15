@@ -427,7 +427,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20000001789999999" green="0.20000001789999999" blue="0.20000001789999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LHH-gZ-RkA" secondAttribute="trailing" id="0nb-gI-bnI"/>
                             <constraint firstItem="Dhx-46-feb" firstAttribute="top" secondItem="V73-WU-W3G" secondAttribute="bottom" constant="8" id="5GU-zC-T5h"/>
