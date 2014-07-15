@@ -33,7 +33,7 @@ PODS:
   - boost/preprocessor-includes (1.51.0)
   - boost/shared_ptr-includes (1.51.0)
   - boost/string_algorithms-includes (1.51.0)
-  - cineio-ios (0.2.2):
+  - cineio-ios (0.3.1):
     - AFNetworking (~> 2.2.4)
     - VideoCore (~> 0.1.6)
   - glm (0.9.4.6)
@@ -47,18 +47,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - cineio-ios (from `/Users/jeffrey/dev/cine-dev/cineio-ios`)
+  - cineio-ios (~> 0.3.1)
   - NSURL+ParseQuery (~> 0.1)
   - NXOAuth2Client (~> 1.2.6)
-
-EXTERNAL SOURCES:
-  cineio-ios:
-    :path: /Users/jeffrey/dev/cine-dev/cineio-ios
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   boost: 581038adda16d11045576013ad27e3eeeabc2d10
-  cineio-ios: 29d11579dd9bdb1a515a954458c0669543bbe068
+  cineio-ios: c424d184cf03faddd0a69408333402f157a1502f
   glm: 840dd35fe3cc445935accf81ffd1384dad532ee7
   NSURL+ParseQuery: 044dd433a061d69368a392670341d2ff9006a0f5
   NXOAuth2Client: f9a3efde1cce92c92fd1518070caf305bd363ef4

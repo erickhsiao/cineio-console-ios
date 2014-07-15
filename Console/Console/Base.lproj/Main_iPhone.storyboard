@@ -457,10 +457,10 @@
             </objects>
             <point key="canvasLocation" x="1456" y="78"/>
         </scene>
-        <!--Cine Player View Controller-->
+        <!--Cine Streamer View Controller-->
         <scene sceneID="f7h-NJ-C1m">
             <objects>
-                <viewController id="Xla-DC-qui" customClass="CinePlayerViewController" sceneMemberID="viewController">
+                <viewController id="Xla-DC-qui" customClass="CineStreamerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ga1-Uo-w6W"/>
                         <viewControllerLayoutGuide type="bottom" id="u6i-44-J2C"/>
@@ -468,17 +468,8 @@
                     <view key="view" contentMode="scaleToFill" id="rIV-iJ-XMS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-ds-0M8">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="spinner" destination="dNY-ds-0M8" id="xV1-mi-2ls"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzR-yj-bNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

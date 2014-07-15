@@ -7,7 +7,7 @@
 //
 
 #import "CineStreamViewController.h"
-#import "CinePlayerViewController.h"
+#import "CineStreamerViewController.h"
 #import "CinePublisherViewController.h"
 #import "CineNavigationViewController.h"
 
@@ -133,8 +133,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSLog(@"segue: %@", segue.identifier);
     if ([segue.identifier isEqualToString:@"playStream"]) {
-        CinePlayerViewController *playViewController = segue.destinationViewController;
-        playViewController.stream = stream;
+        CineStreamerViewController *streamerViewController = segue.destinationViewController;
+        streamerViewController.stream = stream;
     } else if ([segue.identifier isEqualToString:@"publishStream"]) {
         CinePublisherViewController *publisherViewController = segue.destinationViewController;
         publisherViewController.stream = stream;
