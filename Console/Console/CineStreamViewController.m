@@ -9,6 +9,7 @@
 #import "CineStreamViewController.h"
 #import "CinePlayerViewController.h"
 #import "CinePublisherViewController.h"
+#import "CineNavigationViewController.h"
 
 @interface CineStreamViewController ()
 {

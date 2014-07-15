@@ -7,6 +7,8 @@
 //
 
 #import "CinePublisherViewController.h"
+#import "CineAppDelegate.h"
+#import "CineNavigationViewController.h"
 #import <cineio/CineIO.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -29,11 +31,9 @@
 
 @synthesize stream;
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     self.navigationItem.title = @"Publisher";
 
     //-- A/V setup
@@ -51,6 +51,27 @@
     // once we've fully-configured our properties, we can enable the
     // UI controls on our view
     [self enableControls];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self forcePortraitOrientation];
+}
+
+- (void)forcePortraitOrientation
+{
+    // (see: https://stackoverflow.com/questions/12520030/how-to-force-a-uiviewcontroller-to-portait-orientation-in-ios-6)
+    UIApplication* application = [UIApplication sharedApplication];
+    if (application.statusBarOrientation != UIInterfaceOrientationPortrait)
+    {
+        UIViewController *c = [[UIViewController alloc] init];
+        [c.view setBackgroundColor:[UIColor whiteColor]];
+        [self.navigationController presentViewController:c animated:NO completion:^{
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            }];
+        }];
+    }
 }
 
 @end

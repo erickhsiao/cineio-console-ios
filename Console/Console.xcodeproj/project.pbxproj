@@ -32,6 +32,7 @@
 		00ADC6EB1974951E00857375 /* CinePlayerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6E81974951E00857375 /* CinePlayerViewController.mm */; };
 		00ADC6EC1974951E00857375 /* CinePublisherViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6EA1974951E00857375 /* CinePublisherViewController.mm */; };
 		00ADC6EE1974959300857375 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00ADC6ED1974959300857375 /* MediaPlayer.framework */; };
+		00ADC6F11974F2FB00857375 /* CineNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6F01974F2FB00857375 /* CineNavigationViewController.m */; };
 		230D20A7DCA440E6816B1608 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9755E6D300C04A989719F867 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,8 @@
 		00ADC6E91974951E00857375 /* CinePublisherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinePublisherViewController.h; sourceTree = "<group>"; };
 		00ADC6EA1974951E00857375 /* CinePublisherViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinePublisherViewController.mm; sourceTree = "<group>"; };
 		00ADC6ED1974959300857375 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		00ADC6EF1974F2FB00857375 /* CineNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineNavigationViewController.h; sourceTree = "<group>"; };
+		00ADC6F01974F2FB00857375 /* CineNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineNavigationViewController.m; sourceTree = "<group>"; };
 		24183C3AA3FC48D8A391365B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9755E6D300C04A989719F867 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +164,8 @@
 				002983A7196F8F4000817D88 /* CineWebViewController.m */,
 				002983AE19704CD900817D88 /* CineUser.h */,
 				002983AF19704CD900817D88 /* CineUser.m */,
+				00ADC6EF1974F2FB00857375 /* CineNavigationViewController.h */,
+				00ADC6F01974F2FB00857375 /* CineNavigationViewController.m */,
 				00ADC6B31970930700857375 /* CineProjectsTableViewController.h */,
 				00ADC6B41970930700857375 /* CineProjectsTableViewController.m */,
 				00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */,
@@ -344,6 +349,7 @@
 			files = (
 				00ADC6B81970931C00857375 /* CineStreamsTableViewController.m in Sources */,
 				00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */,
+				00ADC6F11974F2FB00857375 /* CineNavigationViewController.m in Sources */,
 				002983B019704CD900817D88 /* CineUser.m in Sources */,
 				00298379196F64CC00817D88 /* main.m in Sources */,
 				00ADC6EC1974951E00857375 /* CinePublisherViewController.mm in Sources */,

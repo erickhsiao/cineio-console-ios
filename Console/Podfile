@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 
-pod 'cineio-ios', '~> 0.2.2'
+pod 'cineio-ios', '~> 0.2.3'
 #pod 'cineio-ios', path: '/Users/jeffrey/dev/cine-dev/cineio-ios'
 pod 'AFNetworking', '~> 2.0'
 pod 'NXOAuth2Client', '~> 1.2.6'
