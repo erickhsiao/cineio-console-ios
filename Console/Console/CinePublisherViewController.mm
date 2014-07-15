@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
 
+    self.navigationItem.title = @"Publisher";
+
     //-- A/V setup
     self.frameWidth = 1280;
     self.frameHeight = 720;

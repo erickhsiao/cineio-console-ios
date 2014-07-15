@@ -15,6 +15,7 @@
 @property (weak, nonatomic) CineStream *stream;
 
 @property (strong, nonatomic) MPMoviePlayerController *moviePlayer;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 - (void)startStreaming;
 

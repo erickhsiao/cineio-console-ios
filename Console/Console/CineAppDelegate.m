@@ -19,6 +19,8 @@
 {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
 
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+
     UIStoryboard *storyboard = self.window.rootViewController.storyboard;
     signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
     [signInViewController initGithubOAuth];
@@ -29,6 +31,7 @@
     
     return YES;
 }
+
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSLog(@"url recieved: %@", url);
