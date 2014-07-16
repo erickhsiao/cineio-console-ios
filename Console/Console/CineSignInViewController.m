@@ -25,10 +25,16 @@
 @synthesize signInView;
 @synthesize activityIndicatorView;
 @synthesize statusLabel;
+
+@synthesize orLabel;
 @synthesize emailField;
 @synthesize passwordField;
 @synthesize signInButton;
 @synthesize forgotPasswordButton;
+
+@synthesize welcomeLabel;
+@synthesize nameField;
+@synthesize joinButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,6 +52,7 @@
     UIWindow *window = [[UIApplication sharedApplication] delegate].window;
     UIStoryboard *storyboard = window.rootViewController.storyboard;
     _webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
+    [self showSignInForm];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -56,10 +63,38 @@
     return NO;
 }
 
-- (IBAction)submitForm:(id)sender {
+- (void)showSignInForm
+{
+    [self setBusy:NO];
+    orLabel.hidden = NO;
+    emailField.hidden = NO;
+    passwordField.hidden = NO;
+    signInButton.hidden = NO;
+    forgotPasswordButton.hidden = NO;
+    
+    welcomeLabel.hidden = YES;
+    nameField.hidden = YES;
+    joinButton.hidden = YES;
+}
+
+- (void)showJoinForm
+{
+    [self setBusy:NO];
+    welcomeLabel.hidden = NO;
+    nameField.hidden = NO;
+    joinButton.hidden = NO;
+
+    orLabel.hidden = YES;
+    emailField.hidden = YES;
+    passwordField.hidden = YES;
+    signInButton.hidden = YES;
+    forgotPasswordButton.hidden = YES;
+}
+
+- (IBAction)signInOrSignUp:(id)sender {
     [self setBusy:YES];
     if (passwordField.isEnabled) {
-        [self signInOrSignUp];
+        [self signIn];
     } else {
         [self recoverPassword];
     }
@@ -78,7 +113,7 @@
     [_webViewController.webView loadRequest:requestUrl];
 }
 
-- (IBAction)toggleForm:(id)sender {
+- (IBAction)toggleSignInOrPasswordRecoveryForm:(id)sender {
     if (passwordField.isEnabled) {
         [passwordField setEnabled:NO];
         [passwordField setHidden:YES];
@@ -99,6 +134,25 @@
     [_webViewController loadURL:@"https://www.cine.io/legal/terms-of-service"];
 }
 
+- (IBAction)join:(id)sender
+{
+    NSLog(@"join");
+    NSDictionary *formData =
+    @{ @"name": nameField.text };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:@"https://www.cine.io/api/1/-/update-account" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
+        CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        appDelegate.user.name = response[@"name"];
+        NSLog(@"user name set to %@ for %@", appDelegate.user.name, appDelegate.user.email);
+        [self setBusy:NO];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
+        [self setBusy:NO];
+    }];
+}
+
 #pragma UI stuff
 
 - (void)setBusy:(BOOL)busy
@@ -115,11 +169,11 @@
     }
 }
 
-#pragma Sign-in / Sign-up stuff
+#pragma Sign-in stuff
 
-- (void)signInOrSignUp
+- (void)signIn
 {
-    NSLog(@"sign up / sign in");
+    NSLog(@"sign in");
     NSDictionary *formData =
     @{ @"username": emailField.text,
        @"password": passwordField.text,
@@ -128,9 +182,14 @@
     [manager POST:@"https://www.cine.io/login" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         CineUser *user = [appDelegate signIn:response];
-        NSLog(@"%@ logged in", user.email);
-        [self setBusy:NO];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"user name: %@", user.name);
+        if (![user.name length]) {
+            [self showJoinForm];
+        } else {
+            NSLog(@"%@ <%@> logged in", user.name, user.email);
+            [self setBusy:NO];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
@@ -174,7 +233,7 @@
         // sign-in
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         CineUser *user = [appDelegate signIn:response];
-        NSLog(@"%@ logged in", user.email);
+        NSLog(@"%@ <%@> signed in", user.name, user.email);
 
         // if the web view controller is open, close it
         if (_webViewController.isViewLoaded && _webViewController.view.window) {

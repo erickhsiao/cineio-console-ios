@@ -16,17 +16,23 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *signInGithubButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *orLabel;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *termsOfServiceButton;
 
-- (IBAction)submitForm:(id)sender;
+- (IBAction)signInOrSignUp:(id)sender;
 - (IBAction)signInGithub:(id)sender;
-- (IBAction)toggleForm:(id)sender;
+- (IBAction)toggleSignInOrPasswordRecoveryForm:(id)sender;
 - (IBAction)showTermsOfService:(id)sender;
+- (IBAction)join:(id)sender;
 
 - (void)signOut;
 - (void)handleLogin:(NSURL *)url;
