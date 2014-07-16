@@ -6,6 +6,7 @@ cine.io end-user console app for the iOS App Store.
 
 ### TODO
 
+- can we handle other legal docs in plain form?
 - capture user name on signup
 - account settings
 - sign-out
@@ -13,9 +14,12 @@ cine.io end-user console app for the iOS App Store.
 - add new stream
 - add new project
 - delete project
+- iPad storyboard
 
 ### Complete
 
+- web view background dark
+- web view close button support cancel
 - sign-in via GitHub
 - sign-in with username and password
 - view list of projects

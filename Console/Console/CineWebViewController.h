@@ -9,7 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface CineWebViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
+
+enum ViewType {
+    kViewTypeOK,
+    kViewTypeCancel
+};
+
+@property (nonatomic, getter=getViewType, setter=setViewType:) ViewType viewType;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 - (void)presentHTML:(NSString*)html;

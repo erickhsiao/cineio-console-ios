@@ -42,6 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UIWindow *window = [[UIApplication sharedApplication] delegate].window;
     UIStoryboard *storyboard = window.rootViewController.storyboard;
     _webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
@@ -69,6 +70,7 @@
 
     // modally show the web view controller
     [self presentViewController:_webViewController animated:YES completion:nil];
+    _webViewController.viewType = kViewTypeCancel;
 
     // request the Github authentication URL
     NSURLRequest *requestUrl = [NSURLRequest requestWithURL:
@@ -93,17 +95,16 @@
 
 - (IBAction)showTermsOfService:(id)sender {
     // modally show the web view controller
-    UIWindow *window = [[UIApplication sharedApplication] delegate].window;
-    UIStoryboard *storyboard = window.rootViewController.storyboard;
-    CineWebViewController *webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
-    [self presentViewController:webViewController animated:YES completion:nil];
+    [self presentViewController:_webViewController animated:YES completion:nil];
+    _webViewController.viewType = kViewTypeOK;
     
     // load the TOS into it
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"https://www.cine.io/api/1/-/static-document?id=legal%2Fterms-of-service" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-        [webViewController presentHTML:response[@"document"]];
+        [_webViewController presentHTML:response[@"document"]];
+        NSLog(@"view type: %u", _webViewController.viewType);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [webViewController presentHTML:[error localizedDescription]];
+        [_webViewController presentHTML:[error localizedDescription]];
     }];
 }
 
