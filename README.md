@@ -4,7 +4,6 @@ cine.io end-user console app for the iOS App Store.
 
 ## MVP
 
-- universal app (iPhone / iPad)
 - display TOS and privacy policy
 - sign-in with username and password
 - sign-in via GitHub
@@ -21,3 +20,4 @@ cine.io end-user console app for the iOS App Store.
 - delete project
 - add new stream
 - delete stream
+- universal app (iPhone / iPad)
