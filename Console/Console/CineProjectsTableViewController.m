@@ -12,7 +12,7 @@
 #import "CineProjectsTableViewController.h"
 #import "CineStreamsTableViewController.h"
 
-@interface CineProjectsTableViewController ()
+@interface CineProjectsTableViewController () <UIAlertViewDelegate>
 
 @end
 
@@ -33,6 +33,16 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Projects";
+    
+    // REALLY!?!?! 8 fucking lines to add a sign-out button!?
+    UIImage *signOutImage = [UIImage imageNamed:@"sign-out"];
+    CGRect signOutImageFrame = CGRectMake(0, 0, signOutImage.size.width, signOutImage.size.height);
+    UIButton* signOutButton = [[UIButton alloc] initWithFrame:signOutImageFrame];
+    [signOutButton setBackgroundImage:signOutImage forState:UIControlStateNormal];
+    [signOutButton setShowsTouchWhenHighlighted:YES];
+    [signOutButton addTarget:self action:@selector(signOut) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem* signOutNavItem = [[UIBarButtonItem alloc] initWithCustomView:signOutButton];
+    [self.navigationItem setLeftBarButtonItem:signOutNavItem];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -40,6 +50,24 @@
     [self loadProjects];
 }
 
+- (void)signOut
+{
+    UIAlertView *confirm = [[UIAlertView alloc] initWithTitle:@"Sign out?"
+                                                    message:@"Are you sure you want to sign out?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:@"Cancel", nil];
+    [confirm show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"signing out");
+        CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        [appDelegate signOut];
+    }
+}
 
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;

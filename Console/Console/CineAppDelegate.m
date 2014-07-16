@@ -21,9 +21,6 @@
 
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 
-    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
-    signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
-    
     if (![self signedIn]) {
         [self showSignInScreen:NO];
     }
@@ -51,6 +48,7 @@
 {
     [signInViewController signOut];
     user = nil;
+    [self showSignInScreen:NO];
 }
 
 - (BOOL)signedIn
@@ -60,6 +58,9 @@
 
 - (void)showSignInScreen:(BOOL)animated
 {
+    UIStoryboard *storyboard = self.window.rootViewController.storyboard;
+    signInViewController = (CineSignInViewController *)[storyboard instantiateViewControllerWithIdentifier:@"signInScreen"];
+    
     [self.window makeKeyAndVisible];
     [self.window.rootViewController presentViewController:signInViewController animated:animated completion:nil];
 }
