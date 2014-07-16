@@ -2,8 +2,9 @@
 
 cine.io end-user console app for the iOS App Store.
 
-## Features
+## MVP
 
+- universal app (iPhone / iPad)
 - display TOS and privacy policy
 - sign-in with username and password
 - sign-in via GitHub
@@ -12,9 +13,11 @@ cine.io end-user console app for the iOS App Store.
 - view list of streams
 - broadcast
 - play
+
+## Future
+
 - update account
 - add new project
 - delete project
 - add new stream
 - delete stream
-- universal app (iPhone / iPad)
