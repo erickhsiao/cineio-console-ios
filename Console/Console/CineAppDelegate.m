@@ -32,7 +32,7 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSLog(@"url recieved: %@", url);
     if ([url.host isEqualToString:@"login"]) {
-        [signInViewController handleLogin:url];
+        [signInViewController handleSignInRedirect:url];
     }
     
     return YES;

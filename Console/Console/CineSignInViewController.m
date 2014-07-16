@@ -187,7 +187,7 @@
         if (![user.name length]) {
             [self showJoinForm];
         } else {
-            NSLog(@"%@ <%@> logged in", user.name, user.email);
+            NSLog(@"%@ <%@> signed in", user.name, user.email);
             [self setBusy:NO];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
@@ -225,26 +225,35 @@
 
 #pragma mark - URL handlers
 
-- (void)handleLogin:(NSURL *)url
+- (void)handleSignInRedirect:(NSURL *)url
 {
     NSDictionary *queryString = @{ @"masterKey": [url parseQuery][@"masterKey"] };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"https://www.cine.io/api/1/-/user" parameters:queryString success:^(AFHTTPRequestOperation *operation, id response) {
-        
         // sign-in
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         CineUser *user = [appDelegate signIn:response];
-        NSLog(@"%@ <%@> signed in", user.name, user.email);
-
-        // if the web view controller is open, close it
-        if (_webViewController.isViewLoaded && _webViewController.view.window) {
-            [_webViewController dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"user name: %@", user.name);
+        if (![user.name length]) {
+            if (_webViewController.isViewLoaded && _webViewController.view.window) {
+                [_webViewController dismissViewControllerAnimated:YES completion:^{
+                    [self showJoinForm];
+                }];
+            } else {
+                [self showJoinForm];                
+            }
+        } else {
+            NSLog(@"%@ <%@> signed in", user.name, user.email);
+            // if the web view controller is open, close it
+            if (_webViewController.isViewLoaded && _webViewController.view.window) {
+                [_webViewController dismissViewControllerAnimated:YES completion:^{
+                    [self setBusy:NO];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+            } else {
                 [self setBusy:NO];
                 [self dismissViewControllerAnimated:YES completion:nil];
-            }];
-        } else {
-            [self setBusy:NO];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            }
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);

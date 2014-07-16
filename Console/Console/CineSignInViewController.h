@@ -35,7 +35,7 @@
 - (IBAction)join:(id)sender;
 
 - (void)signOut;
-- (void)handleLogin:(NSURL *)url;
+- (void)handleSignInRedirect:(NSURL *)url;
 
 
 @end
