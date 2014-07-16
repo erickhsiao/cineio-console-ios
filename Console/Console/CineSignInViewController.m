@@ -13,7 +13,7 @@
 #import "NSURL+QueryParser.h"
 
 
-@interface CineSignInViewController ()
+@interface CineSignInViewController () <UITextFieldDelegate>
 {
     CineWebViewController *_webViewController;
 }
@@ -53,6 +53,7 @@
     UIStoryboard *storyboard = window.rootViewController.storyboard;
     _webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
     [self showSignInForm];
+    statusLabel.text = nil;
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -153,12 +154,12 @@
     }];
 }
 
-#pragma UI stuff
+#pragma mark - UI stuff
 
 - (void)setBusy:(BOOL)busy
 {
     if (busy) {
-        statusLabel.text = @"";
+        statusLabel.text = nil;
         [signInView setUserInteractionEnabled:NO];
         [signInView setHidden:YES];
         [activityIndicatorView startAnimating];
@@ -169,7 +170,7 @@
     }
 }
 
-#pragma Sign-in stuff
+#pragma mark - Sign-in stuff
 
 - (void)signIn
 {
@@ -222,7 +223,7 @@
     }];
 }
 
-#pragma URL handlers
+#pragma mark - URL handlers
 
 - (void)handleLogin:(NSURL *)url
 {
@@ -252,10 +253,16 @@
     }];
 }
 
-- (void)handleStaticDocument:(NSURL *)url
-{
-    NSDictionary *urlParams = [url parseQuery];
-    NSLog(@"urlParams: %@", urlParams);
-}
+#pragma mark - UITextFieldDelegate
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == passwordField) {
+        [self signInOrSignUp:textField];
+    } else if (textField == nameField) {
+        [self join:textField];
+    }
+
+    return YES;
+}
 @end

@@ -6,10 +6,9 @@ cine.io end-user console app for the iOS App Store.
 
 ### TODO
 
-- can we handle other legal docs in plain form?
-- capture user name on signup
 - account settings
 - sign-out
+- verify whether GitHub sign-up needs name capture
 - delete stream
 - add new stream
 - add new project
@@ -18,6 +17,9 @@ cine.io end-user console app for the iOS App Store.
 
 ### Complete
 
+- scroll sign-in view so that keyboard doesn't obscure things
+- capture user name on signup
+- handle other legal docs
 - web view background dark
 - web view close button support cancel
 - sign-in via GitHub
