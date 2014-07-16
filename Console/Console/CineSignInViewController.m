@@ -13,7 +13,7 @@
 #import "NSURL+QueryParser.h"
 
 
-@interface CineSignInViewController () <UIWebViewDelegate>
+@interface CineSignInViewController ()
 {
     CineWebViewController *_webViewController;
 }
@@ -75,7 +75,6 @@
     // request the Github authentication URL
     NSURLRequest *requestUrl = [NSURLRequest requestWithURL:
                                 [NSURL URLWithString:@"https://www.cine.io/auth/github?client=iOS&plan=free"]];
-    _webViewController.webView.delegate = self;
     [_webViewController.webView loadRequest:requestUrl];
 }
 
@@ -97,15 +96,7 @@
     // modally show the web view controller
     [self presentViewController:_webViewController animated:YES completion:nil];
     _webViewController.viewType = kViewTypeOK;
-    
-    // load the TOS into it
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"https://www.cine.io/api/1/-/static-document?id=legal%2Fterms-of-service" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-        [_webViewController presentHTML:response[@"document"]];
-        NSLog(@"view type: %u", _webViewController.viewType);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [_webViewController presentHTML:[error localizedDescription]];
-    }];
+    [_webViewController loadURL:@"https://www.cine.io/legal/terms-of-service"];
 }
 
 #pragma UI stuff
@@ -132,8 +123,7 @@
     NSDictionary *formData =
     @{ @"username": emailField.text,
        @"password": passwordField.text,
-       @"plan": @"free",
-       @"client": @"iOS" };
+       @"plan": @"free" };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:@"https://www.cine.io/login" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -173,7 +163,7 @@
     }];
 }
 
-#pragma GitHub OAuth stuff
+#pragma URL handlers
 
 - (void)handleLogin:(NSURL *)url
 {
@@ -203,29 +193,10 @@
     }];
 }
 
-#pragma mark - Optional UIWebViewDelegate delegate methods
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)handleStaticDocument:(NSURL *)url
 {
-    return YES;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSLog(@"requesting URL: %@", webView.request.URL.absoluteString);
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    NSLog(@"loaded URL: %@", webView.request.URL.absoluteString);
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    NSLog(@"failed to load URL: %@ (%@)", webView.request.URL.absoluteString, error);
+    NSDictionary *urlParams = [url parseQuery];
+    NSLog(@"urlParams: %@", urlParams);
 }
 
 @end

@@ -19,7 +19,7 @@ enum ViewType {
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
-- (void)presentHTML:(NSString*)html;
+- (void)loadURL:(NSString*)url;
 - (IBAction)dismiss:(id)sender;
 
 @end
