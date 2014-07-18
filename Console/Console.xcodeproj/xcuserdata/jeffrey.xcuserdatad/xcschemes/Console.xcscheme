@@ -91,6 +91,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "cine.io Console"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

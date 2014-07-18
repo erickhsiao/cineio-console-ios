@@ -26,6 +26,7 @@
 		002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AA196F8F8A00817D88 /* CineSignInViewController.m */; };
 		002983AD196FE09A00817D88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002983AC196FE09A00817D88 /* README.md */; };
 		002983B019704CD900817D88 /* CineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AF19704CD900817D88 /* CineUser.m */; };
+		009CB19C197997F200C0ADF6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009CB19B197997F200C0ADF6 /* StoreKit.framework */; };
 		00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B41970930700857375 /* CineProjectsTableViewController.m */; };
 		00ADC6B81970931C00857375 /* CineStreamsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */; };
 		00ADC6BB1970B59B00857375 /* CineStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6BA1970B59B00857375 /* CineStreamViewController.m */; };
@@ -73,6 +74,7 @@
 		002983AC196FE09A00817D88 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		002983AE19704CD900817D88 /* CineUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineUser.h; sourceTree = "<group>"; };
 		002983AF19704CD900817D88 /* CineUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineUser.m; sourceTree = "<group>"; };
+		009CB19B197997F200C0ADF6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		00ADC6B31970930700857375 /* CineProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineProjectsTableViewController.h; sourceTree = "<group>"; };
 		00ADC6B41970930700857375 /* CineProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineProjectsTableViewController.m; sourceTree = "<group>"; };
 		00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineStreamsTableViewController.h; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				00ADC6EE1974959300857375 /* MediaPlayer.framework in Frameworks */,
 				0029836F196F64CC00817D88 /* CoreGraphics.framework in Frameworks */,
 				00298371196F64CC00817D88 /* UIKit.framework in Frameworks */,
+				009CB19C197997F200C0ADF6 /* StoreKit.framework in Frameworks */,
 				0029836D196F64CC00817D88 /* Foundation.framework in Frameworks */,
 				230D20A7DCA440E6816B1608 /* libPods.a in Frameworks */,
 			);
@@ -141,6 +144,7 @@
 		0029836B196F64CC00817D88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				009CB19B197997F200C0ADF6 /* StoreKit.framework */,
 				00ADC6ED1974959300857375 /* MediaPlayer.framework */,
 				0029836C196F64CC00817D88 /* Foundation.framework */,
 				0029836E196F64CC00817D88 /* CoreGraphics.framework */,
@@ -261,6 +265,14 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = cine.io;
 				TargetAttributes = {
+					00298368196F64CC00817D88 = {
+						DevelopmentTeam = G5RU2HL4SN;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
+					};
 					0029838C196F64CC00817D88 = {
 						TestTargetID = 00298368196F64CC00817D88;
 					};
@@ -494,11 +506,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Console/Console-Prefix.pch";
 				INFOPLIST_FILE = "Console/Console-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -511,11 +527,15 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Console/Console-Prefix.pch";
 				INFOPLIST_FILE = "Console/Console-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
