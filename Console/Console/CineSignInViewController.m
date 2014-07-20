@@ -90,6 +90,8 @@
     passwordField.hidden = YES;
     signInButton.hidden = YES;
     forgotPasswordButton.hidden = YES;
+
+    [nameField becomeFirstResponder];
 }
 
 - (IBAction)signInOrSignUp:(id)sender {
