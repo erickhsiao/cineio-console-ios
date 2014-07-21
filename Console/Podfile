@@ -1,7 +1,9 @@
 platform :ios, '7.0'
 
-pod 'cineio-ios', '~> 0.3.2'
+pod 'cineio-ios', '~> 0.3.4'
 #pod 'cineio-ios', path: '/Users/jeffrey/dev/cine-dev/cineio-ios'
+#pod 'VideoCore', path: '/Users/jeffrey/dev/cine-dev/VideoCore'
+
 pod 'AFNetworking', '~> 2.0'
 pod 'NSURL+ParseQuery', '~> 0.1'
 pod 'TPKeyboardAvoiding', '~> 1.2.3'
