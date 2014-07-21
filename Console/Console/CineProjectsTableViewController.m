@@ -65,7 +65,7 @@
     if (buttonIndex == 0) {
         NSLog(@"signing out");
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        [appDelegate signOut];
+        [appDelegate.authHandler signOut];
     }
 }
 

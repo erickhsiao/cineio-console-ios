@@ -27,6 +27,7 @@
 		002983AD196FE09A00817D88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002983AC196FE09A00817D88 /* README.md */; };
 		002983B019704CD900817D88 /* CineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AF19704CD900817D88 /* CineUser.m */; };
 		009CB19C197997F200C0ADF6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009CB19B197997F200C0ADF6 /* StoreKit.framework */; };
+		009CB19F197DB27F00C0ADF6 /* CineAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 009CB19E197DB27F00C0ADF6 /* CineAuthHandler.m */; };
 		00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B41970930700857375 /* CineProjectsTableViewController.m */; };
 		00ADC6B81970931C00857375 /* CineStreamsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B71970931C00857375 /* CineStreamsTableViewController.m */; };
 		00ADC6BB1970B59B00857375 /* CineStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6BA1970B59B00857375 /* CineStreamViewController.m */; };
@@ -75,6 +76,8 @@
 		002983AE19704CD900817D88 /* CineUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineUser.h; sourceTree = "<group>"; };
 		002983AF19704CD900817D88 /* CineUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineUser.m; sourceTree = "<group>"; };
 		009CB19B197997F200C0ADF6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		009CB19D197DB27F00C0ADF6 /* CineAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineAuthHandler.h; sourceTree = "<group>"; };
+		009CB19E197DB27F00C0ADF6 /* CineAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineAuthHandler.m; sourceTree = "<group>"; };
 		00ADC6B31970930700857375 /* CineProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineProjectsTableViewController.h; sourceTree = "<group>"; };
 		00ADC6B41970930700857375 /* CineProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineProjectsTableViewController.m; sourceTree = "<group>"; };
 		00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineStreamsTableViewController.h; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				0029837E196F64CC00817D88 /* Main_iPhone.storyboard */,
 				002983AE19704CD900817D88 /* CineUser.h */,
 				002983AF19704CD900817D88 /* CineUser.m */,
+				009CB19D197DB27F00C0ADF6 /* CineAuthHandler.h */,
+				009CB19E197DB27F00C0ADF6 /* CineAuthHandler.m */,
 				002983A9196F8F8A00817D88 /* CineSignInViewController.h */,
 				002983AA196F8F8A00817D88 /* CineSignInViewController.m */,
 				002983A6196F8F4000817D88 /* CineWebViewController.h */,
@@ -366,6 +371,7 @@
 				002983B019704CD900817D88 /* CineUser.m in Sources */,
 				00298379196F64CC00817D88 /* main.m in Sources */,
 				00ADC6EC1974951E00857375 /* CinePublisherViewController.mm in Sources */,
+				009CB19F197DB27F00C0ADF6 /* CineAuthHandler.m in Sources */,
 				002983A8196F8F4000817D88 /* CineWebViewController.m in Sources */,
 				002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */,
 				0029837D196F64CC00817D88 /* CineAppDelegate.m in Sources */,

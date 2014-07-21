@@ -48,7 +48,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="signInGithub:" destination="GXF-qB-L8c" eventType="touchUpInside" id="xyR-YT-HxY"/>
+                                                    <action selector="signInWithGithub:" destination="GXF-qB-L8c" eventType="touchUpInside" id="cZe-V9-IlF"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTg-47-gnO">
@@ -63,7 +63,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="signInOrSignUp:" destination="GXF-qB-L8c" eventType="touchUpInside" id="acy-kD-fHK"/>
+                                                    <action selector="signInOrSignUpOrRecoverPassword:" destination="GXF-qB-L8c" eventType="touchUpInside" id="TRv-bd-cYS"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyP-bk-U21">

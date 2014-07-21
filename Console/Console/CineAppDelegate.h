@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "CineSignInViewController.h"
+#import "CineAuthHandler.h"
 #import "CineUser.h"
 
 @interface CineAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CineUser *user;
+@property (strong, nonatomic) CineAuthHandler *authHandler;
 @property (weak, nonatomic) CineSignInViewController *signInViewController;
 
-- (CineUser *)signIn:(NSDictionary *)userAttributes;
-- (void)signOut;
 - (BOOL)signedIn;
 
 @end

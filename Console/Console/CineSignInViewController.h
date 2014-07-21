@@ -28,13 +28,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *termsOfServiceButton;
 
-- (IBAction)signInOrSignUp:(id)sender;
-- (IBAction)signInGithub:(id)sender;
+- (IBAction)signInWithGithub:(id)sender;
+- (IBAction)signInOrSignUpOrRecoverPassword:(id)sender;
+- (IBAction)join:(id)sender;
 - (IBAction)toggleSignInOrPasswordRecoveryForm:(id)sender;
 - (IBAction)showTermsOfService:(id)sender;
-- (IBAction)join:(id)sender;
-
-- (void)handleSignInRedirect:(NSURL *)url;
-
 
 @end

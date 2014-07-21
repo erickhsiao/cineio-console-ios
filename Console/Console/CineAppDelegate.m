@@ -9,58 +9,79 @@
 #import "CineAppDelegate.h"
 #import "CineSignInViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "NSURL+QueryParser.h"
+
 
 @implementation CineAppDelegate
 
 @synthesize signInViewController;
+@synthesize authHandler;
 @synthesize user;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-
+    
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    
+    authHandler = [[CineAuthHandler alloc] init];
+
+    [self setUpAuthObservers];
 
     if (![self signedIn]) {
+        [self trySignInWithKeychain];
         [self showSignInScreen:NO];
     }
     
     return YES;
 }
 
+- (void)setUpAuthObservers
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didUpdateUser:)
+                                                 name:@"SignInSuccess"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didUpdateUser:)
+                                                 name:@"UpdateUserNameSuccess"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didSignOut)
+                                                 name:@"SignOutSuccess"
+                                               object:nil];
+}
+
+- (void)didUpdateUser:(NSNotification *)notification
+{
+    NSLog(@"appDelegate didUpdateUser");
+    user = [notification userInfo][@"user"];
+}
+
+- (void)didSignOut
+{
+    NSLog(@"appDelegate didSignOut");
+    user = nil;
+    [self showSignInScreen:NO];
+}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    NSLog(@"url recieved: %@", url);
+    NSLog(@"appDelegate handleOpenURL: %@", url);
     if ([url.host isEqualToString:@"login"]) {
-        [signInViewController handleSignInRedirect:url];
+        NSString *masterKey = [url parseQuery][@"masterKey"];
+        [authHandler signInWithMasterKey:masterKey];        
     }
     
     return YES;
 }
 
-- (CineUser *)signIn:(NSDictionary *)userAttributes
-{
-    user = [[CineUser alloc] initWithAttributes:userAttributes];
-    return user;
-}
-
-- (void)signOut
-{
-    // AFNetworking uses standard cookie storage, so to log out, just delete our cookies
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *cookies = [cookieStorage cookies];
-    for (NSHTTPCookie *cookie in cookies) {
-        [cookieStorage deleteCookie:cookie];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
-    user = nil;
-    [self showSignInScreen:NO];
-}
-
 - (BOOL)signedIn
 {
     return !!user;
+}
+
+- (void)trySignInWithKeychain
+{
 }
 
 - (void)showSignInScreen:(BOOL)animated
