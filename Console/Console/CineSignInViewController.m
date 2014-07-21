@@ -141,7 +141,7 @@
 {
     NSLog(@"join");
     NSDictionary *formData =
-    @{ @"name": nameField.text };
+    @{ @"name": [nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:@"https://www.cine.io/api/1/-/update-account" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
         CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -178,8 +178,8 @@
 {
     NSLog(@"sign in");
     NSDictionary *formData =
-    @{ @"username": emailField.text,
-       @"password": passwordField.text,
+    @{ @"username": [emailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]],
+       @"password": [passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]],
        @"plan": @"free" };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:@"https://www.cine.io/login" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
