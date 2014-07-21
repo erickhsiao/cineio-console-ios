@@ -35,7 +35,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     self.navigationItem.title = @"Publisher";
 
     //-- A/V setup
@@ -47,9 +46,11 @@
     //-- cine.io setup
     self.publishUrl = stream.publishUrl;
     self.publishStreamName = stream.publishStreamName;
+
     
-    // once we've fully-configured our properties, we can enable the
-    // UI controls on our view
+    // once we've fully-configured our properties, we can initialize the superview
+    // and enable the UI controls on our view
+    [super viewDidLoad];
     [self enableControls];
 }
 
