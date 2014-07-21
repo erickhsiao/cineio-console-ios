@@ -33,6 +33,11 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Projects";
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didSignIn:)
+                                                 name:@"SignInSuccess"
+                                               object:nil];
     
     // REALLY!?!?! 8 fucking lines to add a sign-out button!?
     UIImage *signOutImage = [UIImage imageNamed:@"sign-out"];
@@ -48,6 +53,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self loadProjects];
+}
+
+- (void)didSignIn:(NSNotification *)notification
+{
+    NSLog(@"projectsViewController didSignIn");
+    [self loadProjectsForUser:[notification userInfo][@"user"]];
 }
 
 - (void)signOut
@@ -119,27 +130,34 @@
 {
     CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     if (appDelegate.signedIn) {
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-            NSArray *projectsJson = response;
-            projects = [[NSMutableArray alloc] init];
-            for (NSDictionary *attrs in projectsJson) {
-                CineProject *project = [[CineProject alloc] initWithAttributes:attrs];
-                [projects addObject:project];
-            }
-            [self.tableView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error loading projects: %@", error);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error"
-                                                            message:@"There was a problem while trying to load your projects."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }];
+        [self loadProjectsForUser:appDelegate.user];
     } else {
         NSLog(@"Can't load projects. User is not yet signed-in.");
     }
+}
+
+- (void)loadProjectsForUser:(CineUser *)user
+{
+    NSLog(@"sign in");
+    NSDictionary *formData = @{ @"masterKey": user.masterKey };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
+        NSArray *projectsJson = response;
+        projects = [[NSMutableArray alloc] init];
+        for (NSDictionary *attrs in projectsJson) {
+            CineProject *project = [[CineProject alloc] initWithAttributes:attrs];
+            [projects addObject:project];
+        }
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error loading projects: %@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                        message:@"There was a problem while trying to load your projects."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }];
 }
 
 #pragma mark - Navigation

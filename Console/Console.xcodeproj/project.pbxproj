@@ -78,6 +78,7 @@
 		009CB19B197997F200C0ADF6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		009CB19D197DB27F00C0ADF6 /* CineAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineAuthHandler.h; sourceTree = "<group>"; };
 		009CB19E197DB27F00C0ADF6 /* CineAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineAuthHandler.m; sourceTree = "<group>"; };
+		009CB1A0197DCABD00C0ADF6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		00ADC6B31970930700857375 /* CineProjectsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineProjectsTableViewController.h; sourceTree = "<group>"; };
 		00ADC6B41970930700857375 /* CineProjectsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CineProjectsTableViewController.m; sourceTree = "<group>"; };
 		00ADC6B61970931C00857375 /* CineStreamsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CineStreamsTableViewController.h; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 		0029836B196F64CC00817D88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				009CB1A0197DCABD00C0ADF6 /* Security.framework */,
 				009CB19B197997F200C0ADF6 /* StoreKit.framework */,
 				00ADC6ED1974959300857375 /* MediaPlayer.framework */,
 				0029836C196F64CC00817D88 /* Foundation.framework */,

@@ -38,6 +38,7 @@ PODS:
     - VideoCore (~> 0.1.8)
   - glm (0.9.4.6)
   - NSURL+ParseQuery (0.1)
+  - SSKeychain (1.2.2)
   - TPKeyboardAvoiding (1.2.3)
   - UriParser-cpp (0.1.3)
   - VideoCore (0.1.8.4):
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - cineio-ios (~> 0.3.4)
   - NSURL+ParseQuery (~> 0.1)
+  - SSKeychain (~> 1.2.2)
   - TPKeyboardAvoiding (~> 1.2.3)
 
 SPEC CHECKSUMS:
@@ -57,6 +59,7 @@ SPEC CHECKSUMS:
   cineio-ios: 942566a2f9510dcaed416cd3e6c864eca9514830
   glm: 840dd35fe3cc445935accf81ffd1384dad532ee7
   NSURL+ParseQuery: 044dd433a061d69368a392670341d2ff9006a0f5
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   TPKeyboardAvoiding: ca26afa683d829cb96fe69b887fc8be4178f0b9a
   UriParser-cpp: e6df3fd87445ba4ab37a72acafb4f03bc39db524
   VideoCore: 94ccf800d8527f5252a7c70c696aa81c608f5943

@@ -7,9 +7,11 @@
 //
 
 #import "CineAppDelegate.h"
+
+#import <AFNetworking/AFNetworkActivityIndicatorManager.h>
+#import <SSKeychain/SSKeychain.h>
+#import <NSURL+ParseQuery/NSURL+QueryParser.h>
 #import "CineSignInViewController.h"
-#import "AFNetworkActivityIndicatorManager.h"
-#import "NSURL+QueryParser.h"
 
 
 @implementation CineAppDelegate
@@ -29,8 +31,7 @@
     [self setUpAuthObservers];
 
     if (![self signedIn]) {
-        [self trySignInWithKeychain];
-        [self showSignInScreen:NO];
+        [self tryAutoSignInOrShowSignInScreen];
     }
     
     return YES;
@@ -56,11 +57,13 @@
 {
     NSLog(@"appDelegate didUpdateUser");
     user = [notification userInfo][@"user"];
+    [SSKeychain setPassword:user.masterKey forService:@"cine.io" account:user.email];
 }
 
 - (void)didSignOut
 {
     NSLog(@"appDelegate didSignOut");
+    [SSKeychain deletePasswordForService:@"cine.io" account:user.email];
     user = nil;
     [self showSignInScreen:NO];
 }
@@ -80,8 +83,17 @@
     return !!user;
 }
 
-- (void)trySignInWithKeychain
+- (void)tryAutoSignInOrShowSignInScreen
 {
+    NSArray *accounts = [SSKeychain accountsForService:@"cine.io"];
+    if ([accounts count]) {
+        // try to sign-in
+        NSString *email = accounts[0][@"acct"];
+        NSString *masterKey = [SSKeychain passwordForService:@"cine.io" account:email];
+        [authHandler signInWithMasterKey:masterKey];
+    } else {
+        [self showSignInScreen:NO];
+    }
 }
 
 - (void)showSignInScreen:(BOOL)animated
