@@ -46,7 +46,14 @@
 
 - (void)signOut
 {
-    [signInViewController signOut];
+    // AFNetworking uses standard cookie storage, so to log out, just delete our cookies
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSArray *cookies = [cookieStorage cookies];
+    for (NSHTTPCookie *cookie in cookies) {
+        [cookieStorage deleteCookie:cookie];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     user = nil;
     [self showSignInScreen:NO];
 }

@@ -34,7 +34,6 @@
 - (IBAction)showTermsOfService:(id)sender;
 - (IBAction)join:(id)sender;
 
-- (void)signOut;
 - (void)handleSignInRedirect:(NSURL *)url;
 
 

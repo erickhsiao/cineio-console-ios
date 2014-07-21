@@ -69,6 +69,9 @@
 }
 
 - (IBAction)dismiss:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"WebViewDismissed"
+                                                        object:nil
+                                                      userInfo:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

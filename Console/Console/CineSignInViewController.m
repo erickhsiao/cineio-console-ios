@@ -52,6 +52,12 @@
     UIWindow *window = [[UIApplication sharedApplication] delegate].window;
     UIStoryboard *storyboard = window.rootViewController.storyboard;
     _webViewController = (CineWebViewController *)[storyboard instantiateViewControllerWithIdentifier:@"webScreen"];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didDismissWebView)
+                                                 name:@"WebViewDismissed"
+                                               object:nil];
+    
     [self showSignInForm];
     statusLabel.text = nil;
 }
@@ -114,6 +120,12 @@
     NSURLRequest *requestUrl = [NSURLRequest requestWithURL:
                                 [NSURL URLWithString:@"https://www.cine.io/auth/github?client=iOS&plan=free"]];
     [_webViewController.webView loadRequest:requestUrl];
+}
+
+- (void)didDismissWebView
+{
+    NSLog(@"didDismissWebView");
+    [self setBusy:NO];
 }
 
 - (IBAction)toggleSignInOrPasswordRecoveryForm:(id)sender {
@@ -198,16 +210,6 @@
         statusLabel.text = [NSString stringWithFormat:@"ERROR: %@", [error localizedDescription]];
         [self setBusy:NO];
     }];
-}
-
-- (void)signOut
-{
-    // AFNetworking uses standard cookie storage, so to log out, just delete our cookies
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *cookies = [cookieStorage cookies];
-    for (NSHTTPCookie *cookie in cookies) {
-        [cookieStorage deleteCookie:cookie];
-    }
 }
 
 - (void)recoverPassword
