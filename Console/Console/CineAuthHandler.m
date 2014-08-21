@@ -42,9 +42,9 @@
     }];
 }
 
-- (void)signInWithMasterKey:(NSString *)masterKey
+- (void)signInWithUserToken:(NSString *)userToken
 {
-    NSDictionary *queryString = @{ @"masterKey": masterKey };
+    NSDictionary *queryString = @{ @"userToken": userToken };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"https://www.cine.io/api/1/-/user" parameters:queryString success:^(AFHTTPRequestOperation *operation, id response) {
         CineUser *user = [[CineUser alloc] initWithAttributes:response];

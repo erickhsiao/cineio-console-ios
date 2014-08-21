@@ -57,7 +57,7 @@
 {
     NSLog(@"appDelegate didUpdateUser");
     user = [notification userInfo][@"user"];
-    [SSKeychain setPassword:user.masterKey forService:@"cine.io" account:user.email];
+    [SSKeychain setPassword:user.userToken forService:@"cine.io" account:user.email];
 }
 
 - (void)didSignOut
@@ -72,7 +72,7 @@
     NSLog(@"appDelegate handleOpenURL: %@", url);
     if ([url.host isEqualToString:@"login"]) {
         NSString *masterKey = [url parseQuery][@"masterKey"];
-        [authHandler signInWithMasterKey:masterKey];        
+        [authHandler signInWithUserToken:masterKey];        
     }
     
     return YES;
@@ -90,7 +90,7 @@
         // try to sign-in
         NSString *email = accounts[0][@"acct"];
         NSString *masterKey = [SSKeychain passwordForService:@"cine.io" account:email];
-        [authHandler signInWithMasterKey:masterKey];
+        [authHandler signInWithUserToken:masterKey];
     } else {
         [self showSignInScreen:NO];
     }

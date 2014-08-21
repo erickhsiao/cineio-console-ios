@@ -11,7 +11,7 @@
 @interface CineAuthHandler : NSObject
 
 - (void)signInWithEmail:(NSString *)email andPassword:(NSString *)password;
-- (void)signInWithMasterKey:(NSString *)masterKey;
+- (void)signInWithUserToken:(NSString *)masterKey;
 - (void)updateUserName:(NSString *)name;
 - (void)initiatePasswordRecoveryForEmail:(NSString *)email;
 - (void)signOut;
