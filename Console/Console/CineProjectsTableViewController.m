@@ -9,7 +9,6 @@
 #import "CineProjectsTableViewController.h"
 #import "cineio/CineIO.h"
 #import "CineAppDelegate.h"
-#import "CineProjectsTableViewController.h"
 #import "CineStreamsTableViewController.h"
 #import "CineAccount.h"
 
@@ -19,6 +18,7 @@
 
 @implementation CineProjectsTableViewController
 
+@synthesize account;
 @synthesize projects;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -34,54 +34,11 @@
 {
     [super viewDidLoad];
     self.navigationItem.title = @"Projects";
-
-    // TODO -- move this to accounts table view controller
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didSignIn:)
-                                                 name:@"SignInSuccess"
-                                               object:nil];
-    
-    // REALLY!?!?! 8 fucking lines to add a sign-out button!?
-    UIImage *signOutImage = [UIImage imageNamed:@"sign-out"];
-    CGRect signOutImageFrame = CGRectMake(0, 0, signOutImage.size.width, signOutImage.size.height);
-    UIButton* signOutButton = [[UIButton alloc] initWithFrame:signOutImageFrame];
-    [signOutButton setBackgroundImage:signOutImage forState:UIControlStateNormal];
-    [signOutButton setShowsTouchWhenHighlighted:YES];
-    [signOutButton addTarget:self action:@selector(signOut) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem* signOutNavItem = [[UIBarButtonItem alloc] initWithCustomView:signOutButton];
-    [self.navigationItem setLeftBarButtonItem:signOutNavItem];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self loadProjects];
-}
-
-// TODO -- move this to accounts table view controller
-- (void)didSignIn:(NSNotification *)notification
-{
-    NSLog(@"projectsViewController didSignIn");
-    CineUser* user = [notification userInfo][@"user"];
-    [self loadProjectsForAccount:user.accounts[0]];
-}
-
-- (void)signOut
-{
-    UIAlertView *confirm = [[UIAlertView alloc] initWithTitle:@"Sign out?"
-                                                    message:@"Are you sure you want to sign out?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:@"Cancel", nil];
-    [confirm show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        NSLog(@"signing out");
-        CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        [appDelegate.authHandler signOut];
-    }
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -132,18 +89,6 @@
 
 - (void)loadProjects
 {
-    CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    if (appDelegate.signedIn) {
-        // TODO -- this really should only work with an account
-        [self loadProjectsForAccount:appDelegate.user.accounts[0]];
-    } else {
-        NSLog(@"Can't load projects. User is not yet signed-in.");
-    }
-}
-
-- (void)loadProjectsForAccount:(CineAccount *)account
-{
-    NSLog(@"sign in");
     NSDictionary *formData = @{ @"masterKey": account.masterKey };
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {

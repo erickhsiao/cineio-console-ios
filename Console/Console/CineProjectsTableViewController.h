@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CineAccount.h"
 
 @interface CineProjectsTableViewController : UITableViewController
 
+@property (strong, nonatomic) CineAccount *account;
 @property (strong, nonatomic) NSMutableArray *projects;
 
 @end

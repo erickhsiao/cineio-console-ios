@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="amp-na-zXW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PDA-Vv-eTl">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -354,7 +354,39 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOi-N5-2ET" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="78"/>
+            <point key="canvasLocation" x="1657" y="78"/>
+        </scene>
+        <!--Cine Accounts Table View Controller-->
+        <scene sceneID="dAZ-go-0XQ">
+            <objects>
+                <tableViewController id="ddh-ci-JPc" customClass="CineAccountsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0ks-Ra-AoM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AccountCell" id="Lfx-AI-taO">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfx-AI-taO" id="InS-FA-hd1">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="k5Q-pc-p7f" kind="push" identifier="showProjectsForAccount" id="5J8-J8-HYM"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ddh-ci-JPc" id="4ST-My-2ea"/>
+                            <outlet property="delegate" destination="ddh-ci-JPc" id="sd2-sd-YCU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1Zt-fC-b33"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Qu-Jo-SgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1164" y="78"/>
         </scene>
         <!--Cine Streams Table View Controller - Streams-->
         <scene sceneID="jSK-um-JVe">
@@ -386,7 +418,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh1-8Z-1wI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="962" y="78"/>
+            <point key="canvasLocation" x="2152" y="78"/>
         </scene>
         <!--Cine Stream View Controller-->
         <scene sceneID="ztj-HZ-1oS">
@@ -502,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja6-X7-9qa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456" y="78"/>
+            <point key="canvasLocation" x="2685" y="78"/>
         </scene>
         <!--Cine Streamer View Controller-->
         <scene sceneID="f7h-NJ-C1m">
@@ -517,10 +549,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="pzI-Cf-jYX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzR-yj-bNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="-323"/>
+            <point key="canvasLocation" x="3149" y="-323"/>
         </scene>
         <!--Cine Publisher View Controller-->
         <scene sceneID="TLj-47-kCa">
@@ -536,28 +569,30 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="mCb-3X-AJt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HjG-Li-55j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="357"/>
+            <point key="canvasLocation" x="3149" y="357"/>
         </scene>
-        <!--Cine Navigation View Controller - Projects-->
-        <scene sceneID="xm7-bL-eke">
+        <!--Navigation Controller-->
+        <scene sceneID="2fE-qW-osy">
             <objects>
-                <navigationController title="Projects" automaticallyAdjustsScrollViewInsets="NO" id="amp-na-zXW" customClass="CineNavigationViewController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PDA-Vv-eTl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DCo-Fi-WnG">
+                    <navigationItem key="navigationItem" id="dg9-W9-Y4Y"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ka3-bb-Ym2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="k5Q-pc-p7f" kind="relationship" relationship="rootViewController" id="zh9-EL-fWO"/>
+                        <segue destination="ddh-ci-JPc" kind="relationship" relationship="rootViewController" id="mu9-Qe-e7q"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="64c-Xs-Rl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qEP-Zc-7ew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="78"/>
+            <point key="canvasLocation" x="638" y="78"/>
         </scene>
     </scenes>
     <resources>
