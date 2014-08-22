@@ -11,6 +11,7 @@
 #import "CineAppDelegate.h"
 #import "CineStreamsTableViewController.h"
 #import "CineAccount.h"
+#import "cineio/CineIO.h"
 
 @interface CineProjectsTableViewController () <UIAlertViewDelegate>
 
@@ -80,8 +81,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    CineAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    NSString *headerTitle = appDelegate.user ? ((appDelegate.user.name && appDelegate.user.name.length) ? appDelegate.user.name : appDelegate.user.email) : @"Please wait ...";
+    NSString *headerTitle = (account && account.name) ? account.name : @"Please wait ...";
     return headerTitle;
 }
 
@@ -89,24 +89,11 @@
 
 - (void)loadProjects
 {
-    NSDictionary *formData = @{ @"masterKey": account.masterKey };
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"https://www.cine.io/api/1/-/projects" parameters:formData success:^(AFHTTPRequestOperation *operation, id response) {
-        NSArray *projectsJson = response;
-        projects = [[NSMutableArray alloc] init];
-        for (NSDictionary *attrs in projectsJson) {
-            CineProject *project = [[CineProject alloc] initWithAttributes:attrs];
-            [projects addObject:project];
-        }
+    CineClient *cine = [[CineClient alloc] init];
+    cine.masterKey = account.masterKey;
+    [cine getProjectsWithCompletionHandler:^(NSError *err, NSArray *loadedProjects) {
+        projects = [[NSMutableArray alloc] initWithArray:loadedProjects];
         [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error loading projects: %@", error);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network error"
-                                                        message:@"There was a problem while trying to load your projects."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
     }];
 }
 

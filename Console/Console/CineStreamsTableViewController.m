@@ -79,7 +79,8 @@
 
 - (void)loadStreams
 {
-    CineClient *cine = [[CineClient alloc] initWithSecretKey:project.secretKey];
+    CineClient *cine = [[CineClient alloc] init];
+    cine.projectSecretKey = project.secretKey;
     [cine getStreamsWithCompletionHandler:^(NSError *err, NSArray *loadedStreams) {
         streams = [[NSMutableArray alloc] initWithArray:loadedStreams];
         [self.tableView reloadData];        
