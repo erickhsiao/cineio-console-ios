@@ -58,7 +58,14 @@
 {
     NSLog(@"accountsViewController didSignIn");
     user = (CineUser *)[notification userInfo][@"user"];
-    [self.tableView reloadData];
+    // if there's only one account, push the projects controller for that account
+    if ([user.accounts count] == 1) {
+        CineProjectsTableViewController *projectsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CineProjectsTableViewController"];
+        projectsViewController.account = user.accounts[0];
+        [self.navigationController pushViewController:projectsViewController animated:NO];
+    } else {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)signOut
@@ -139,6 +146,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"segue: %@", segue.identifier);
     if ([segue.identifier isEqualToString:@"showProjectsForAccount"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CineProjectsTableViewController *projectsViewController = segue.destinationViewController;

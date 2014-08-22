@@ -113,6 +113,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"segue: %@", segue.identifier);
     if ([segue.identifier isEqualToString:@"showStreamsForProject"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         CineStreamsTableViewController *streamsViewController = segue.destinationViewController;
