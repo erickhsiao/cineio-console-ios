@@ -33,15 +33,15 @@ PODS:
   - boost/preprocessor-includes (1.51.0)
   - boost/shared_ptr-includes (1.51.0)
   - boost/string_algorithms-includes (1.51.0)
-  - cineio-ios (0.4.4):
-    - AFNetworking (~> 2.2.4)
-    - VideoCore (~> 0.1.9)
+  - cineio-ios (0.4.8):
+    - AFNetworking (~> 2.4.1)
+    - VideoCore (~> 0.1.10)
   - glm (0.9.4.6)
   - NSURL+ParseQuery (0.1)
   - SSKeychain (1.2.2)
   - TPKeyboardAvoiding (1.2.3)
   - UriParser-cpp (0.1.3)
-  - VideoCore (0.1.10.0):
+  - VideoCore (0.1.10.3):
     - boost (~> 1.51.0)
     - glm (~> 0.9.4.6)
     - UriParser-cpp (~> 0.1.3)
@@ -56,12 +56,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   boost: 581038adda16d11045576013ad27e3eeeabc2d10
-  cineio-ios: 1d893310bc3f5730509c84442ace61f83b0a6afe
+  cineio-ios: 8e51e5dcb97fe8e4d6703a352ac44bc323f95517
   glm: 840dd35fe3cc445935accf81ffd1384dad532ee7
   NSURL+ParseQuery: 044dd433a061d69368a392670341d2ff9006a0f5
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   TPKeyboardAvoiding: ca26afa683d829cb96fe69b887fc8be4178f0b9a
   UriParser-cpp: e6df3fd87445ba4ab37a72acafb4f03bc39db524
-  VideoCore: 4d1dc8391e508de9a290d12595196e197091644b
+  VideoCore: 41909cd21068efac04744ba24e08929896e071f5
 
 COCOAPODS: 0.33.1

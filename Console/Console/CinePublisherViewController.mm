@@ -46,6 +46,24 @@
     [self forcePortraitOrientation];
 }
 
+- (void)toggleStreaming:(id)sender
+{
+    switch(self.streamState) {
+        case CineStreamStateNone:
+        case CineStreamStatePreviewStarted:
+        case CineStreamStateEnded:
+        case CineStreamStateError:
+            [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
+            break;
+        default:
+            [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+            break;
+    }
+
+    // start / stop the actual stream
+    [super toggleStreaming:sender];
+}
+
 - (void)forcePortraitOrientation
 {
     // (see: https://stackoverflow.com/questions/12520030/how-to-force-a-uiviewcontroller-to-portait-orientation-in-ios-6)
