@@ -71,8 +71,8 @@
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     NSLog(@"appDelegate handleOpenURL: %@", url);
     if ([url.host isEqualToString:@"login"]) {
-        NSString *masterKey = [url parseQuery][@"masterKey"];
-        [authHandler signInWithUserToken:masterKey];        
+        NSString *userToken = [url parseQuery][@"userToken"];
+        [authHandler signInWithUserToken:userToken];
     }
     
     return YES;
@@ -89,8 +89,8 @@
     if ([accounts count]) {
         // try to sign-in
         NSString *email = accounts[0][@"acct"];
-        NSString *masterKey = [SSKeychain passwordForService:@"cine.io" account:email];
-        [authHandler signInWithUserToken:masterKey];
+        NSString *userToken = [SSKeychain passwordForService:@"cine.io" account:email];
+        [authHandler signInWithUserToken:userToken];
     } else {
         [self showSignInScreen:NO];
     }
