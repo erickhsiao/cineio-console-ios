@@ -2,8 +2,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
 
-#pod 'cineio-ios', '~> 0.5'
-pod 'cineio-ios', path: '/Users/jeffrey/dev/cine-dev/cineio-ios'
+pod 'cineio-ios', '~> 0.5'
+#pod 'cineio-ios', path: '/Users/jeffrey/dev/cine-dev/cineio-ios'
 #pod 'VideoCore', path: '/Users/jeffrey/dev/cine-dev/VideoCore'
 
 pod 'AFNetworking', '~> 2.0'
