@@ -26,6 +26,7 @@
 		002983AB196F8F8A00817D88 /* CineSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AA196F8F8A00817D88 /* CineSignInViewController.m */; };
 		002983AD196FE09A00817D88 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 002983AC196FE09A00817D88 /* README.md */; };
 		002983B019704CD900817D88 /* CineUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 002983AF19704CD900817D88 /* CineUser.m */; };
+		007DE55F1B12826F005687DA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009CB1A0197DCABD00C0ADF6 /* Security.framework */; };
 		009CB19C197997F200C0ADF6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009CB19B197997F200C0ADF6 /* StoreKit.framework */; };
 		009CB19F197DB27F00C0ADF6 /* CineAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 009CB19E197DB27F00C0ADF6 /* CineAuthHandler.m */; };
 		00ADC6B51970930700857375 /* CineProjectsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ADC6B41970930700857375 /* CineProjectsTableViewController.m */; };
@@ -108,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007DE55F1B12826F005687DA /* Security.framework in Frameworks */,
 				00ADC6EE1974959300857375 /* MediaPlayer.framework in Frameworks */,
 				0029836F196F64CC00817D88 /* CoreGraphics.framework in Frameworks */,
 				00298371196F64CC00817D88 /* UIKit.framework in Frameworks */,
@@ -536,13 +538,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Console/Console-Prefix.pch";
 				INFOPLIST_FILE = "Console/Console-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -557,13 +562,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				GCC_INPUT_FILETYPE = automatic;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Console/Console-Prefix.pch";
 				INFOPLIST_FILE = "Console/Console-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
