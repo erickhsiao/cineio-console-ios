@@ -1,12 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '7.0'
+platform :ios, '8.0'
 
-pod 'cineio-ios', '~> 0.5'
-#pod 'cineio-ios', path: '/Users/jeffrey/dev/cine-dev/cineio-ios'
+pod 'cineio-broadcast-ios', '~> 0.7'
+#pod 'cineio-broadcast-ios', path: '/Users/jeffrey/dev/cine-dev/cineio-broadcast-ios'
 #pod 'VideoCore', path: '/Users/jeffrey/dev/cine-dev/VideoCore'
 
-pod 'AFNetworking', '~> 2.0'
+pod 'AFNetworking', '~> 2.5'
 pod 'NSURL+ParseQuery', '~> 0.1'
 pod 'TPKeyboardAvoiding', '~> 1.2.3'
 pod 'SSKeychain', '~> 1.2.2'
