@@ -119,7 +119,7 @@
     
     CineAccount *account = [user.accounts objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = account.name ? account.name : [NSString stringWithFormat:@"Account %d", indexPath.row+1];
+    cell.textLabel.text = account.name ? account.name : [NSString stringWithFormat:@"Account %ld", indexPath.row+1];
     
     return cell;
 }
