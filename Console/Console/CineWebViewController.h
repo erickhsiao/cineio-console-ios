@@ -10,10 +10,10 @@
 
 @interface CineWebViewController : UIViewController
 
-enum ViewType {
+typedef enum {
     kViewTypeOK,
     kViewTypeCancel
-};
+} ViewType;
 
 @property (nonatomic, getter=getViewType, setter=setViewType:) ViewType viewType;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
