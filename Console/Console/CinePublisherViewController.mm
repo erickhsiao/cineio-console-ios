@@ -10,7 +10,6 @@
 #import "CineAppDelegate.h"
 #import "CineNavigationViewController.h"
 #import <cineio/CineIO.h>
-#import <AVFoundation/AVFoundation.h>
 
 @interface CinePublisherViewController ()
 
